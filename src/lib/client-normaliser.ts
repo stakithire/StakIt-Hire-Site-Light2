@@ -1,0 +1,1 @@
+export function normaliseClientData(data: any) { return data; }
