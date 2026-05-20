@@ -1,6 +1,5 @@
 
 /**
- * Static placeholder for administrative utilities.
+ * Static administrative utilities shell.
  */
-export function getAuth() { return null; }
-export function getFirestore() { return null; }
+export function getRegistry() { return null; }

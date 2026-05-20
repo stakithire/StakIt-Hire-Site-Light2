@@ -1,5 +1,2 @@
-
-/**
- * Static configuration. No keys or environment variables are used.
- */
+/** Static site configuration. */
 export const firebaseConfig = {};

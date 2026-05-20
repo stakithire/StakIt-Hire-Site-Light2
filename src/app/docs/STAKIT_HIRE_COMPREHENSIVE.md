@@ -13,15 +13,10 @@
 The application is built with a "Premium-Utility" aesthetic, balancing industrial reliability with a clean, modern digital interface.
 
 ### 2.1 Color Palette (HSL Implementation)
-- **Background:** `#F0F4F8` (HSL 210 33% 96%) - A soft, cool light gray that reduces eye strain and feels professional.
-- **Primary:** Purple (HSL 260 80% 55%) - Used for branding, primary buttons, and active states.
-- **Accent:** Green (HSL 142 60% 45%) - Used for success states, protection plans, and sustainability highlights.
-- **Muted:** (HSL 210 40% 94%) - Used for secondary backgrounds and card borders.
-
-### 2.2 UI Elements & Shadows
-- **Shadow Soft:** `0 4px 20px -2px rgba(0, 0, 0, 0.05)` - For standard equipment cards.
-- **Shadow Premium:** `0 10px 30px -5px rgba(0, 0, 0, 0.1)` - For hero sections and primary call-to-action cards.
-- **Border Radius:** `0.75rem` (12px) - Applied consistently across all cards and buttons for a modern, approachable feel.
+- **Background:** `#F0F4F8` (HSL 210 33% 96%)
+- **Primary:** Purple (HSL 260 80% 55%)
+- **Accent:** Green (HSL 142 60% 45%)
+- **Muted:** (HSL 210 40% 94%)
 
 ---
 
@@ -37,20 +32,11 @@ The application is built with a "Premium-Utility" aesthetic, balancing industria
 | **Family Move** | $235.00 | 50 Box Stak, 2x Bubble Wrap, 1x Queen & 1x Single Protector (Hire), 1x Stickers | $120.00 |
 | **Ultimate Home** | $310.00 | 70 Box Stak, 2x Bubble Wrap, 1x Packing Paper, 1x King Protector (Hire), 1x Stickers | $160.00 |
 
-### 3.2 À La Carte Box Hire
-| Package | Rate (1st Week) | Extra Week |
-| :--- | :--- | :--- |
-| **70 Box Stak** | $260.00 | $160.00 |
-| **50 Box Stak** | $195.00 | $120.00 |
-| **35 Box Stak** | $135.00 | $90.00 |
-| **25 Box Stak** | $105.00 | $65.00 |
-| **Single Box** | $4.00 | $2.50 |
-
 ---
 
 ## 4. Application Functionality
 
 ### 4.1 Customer Experience
-- **Messenger Booking:** All bookings are finalized via Facebook Messenger to ensure personalized logistics.
+- **Messenger Booking:** All bookings are finalized via Facebook Messenger.
 - **Eco-Friendly focus:** Durable, reusable plastic crates.
 - **Local Service:** Dedicated to the Greater Penrith Area.

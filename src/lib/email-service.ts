@@ -1,3 +1,7 @@
-export async function sendEmail() {
-    return { success: true };
+
+/**
+ * Email service shell.
+ */
+export async function sendNotification() {
+    return { status: 'sent' };
 }

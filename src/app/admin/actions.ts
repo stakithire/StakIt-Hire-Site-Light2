@@ -1,8 +1,5 @@
 'use server';
-
-/**
- * Administrative actions are disabled.
- */
-export async function placeholderAdminAction() {
-  return { success: false };
+/** Inert server actions for static rollout. */
+export async function performAction() {
+  return { status: 'disabled' };
 }

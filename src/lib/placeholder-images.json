@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "site-logo",
+      "description": "The official StakIt Hire brand logo.",
+      "imageUrl": "https://live.staticflickr.com/65535/55276643036_18fb9e6e82.jpg",
+      "imageHint": "company logo"
+    },
+    {
       "id": "moving-boxes",
       "description": "A stack of plastic moving containers.",
       "imageUrl": "https://live.staticflickr.com/65535/54902437847_d2e09c1270_c.jpg",

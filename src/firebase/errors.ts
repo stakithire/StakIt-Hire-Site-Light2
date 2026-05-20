@@ -1,12 +1,6 @@
-
-'use client';
-/**
- * Sanitized placeholder for error handling.
- * All technical tokens and simulated auth objects have been removed.
- */
-export class FirestorePermissionError extends Error {
+/** Static error shell. */
+export class AppError extends Error {
   constructor() {
-    super('Access denied.');
-    this.name = 'AccessError';
+    super('Action unavailable.');
   }
 }

@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -13,7 +12,11 @@ export default function PrivacyPolicyPage() {
         <h1 className="text-4xl font-headline font-bold text-foreground">
           Privacy Policy
         </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
+        <div className="mt-2 text-lg text-muted-foreground">
+          <p>Business Name: StakIt Hire</p>
+          <p>ABN: 72 970 045 408</p>
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">
           Last updated: 11 April 2026
         </p>
       </header>
@@ -24,7 +27,7 @@ export default function PrivacyPolicyPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            StakIt Hire (ABN 72 970 045 408) is committed to protecting your privacy and handling your personal information in accordance with the Privacy Act 1988.
+            StakIt Hire is committed to protecting your privacy and handling your personal information in accordance with the Privacy Act 1988.
           </p>
         </CardContent>
       </Card>
@@ -44,18 +47,7 @@ export default function PrivacyPolicyPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
             <p>We may disclose your personal information to secure payment providers and delivery logistics partners only as necessary to fulfill your order.</p>
-            <p>We do <strong>not sell your personal information</strong> to third parties.</p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>4. Data Retention</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-muted-foreground">
-          <p>
-            We retain personal information for as long as necessary for operational or legal purposes.
-          </p>
+            <p>We do not sell your personal information to third parties.</p>
         </CardContent>
       </Card>
     </div>
