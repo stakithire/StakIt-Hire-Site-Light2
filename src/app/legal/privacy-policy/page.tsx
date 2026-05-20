@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -21,33 +22,33 @@ export default function PrivacyPolicyPage() {
         </p>
       </header>
 
-      <Card>
+      <Card className="border-none shadow-soft rounded-3xl">
         <CardHeader>
           <CardTitle>1. Introduction</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
-            StakIt Hire is committed to protecting your privacy and handling your personal information in accordance with the Privacy Act 1988.
+            StakIt Hire is committed to protecting your privacy and handling your personal information in accordance with the Privacy Act 1988 (Cth).
           </p>
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-none shadow-soft rounded-3xl">
         <CardHeader>
-          <CardTitle>2. Information We Collect</CardTitle>
+          <CardTitle>2. Information Collection</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
-            <p>We collect information necessary to provide our rental services, including name, email, phone number, and delivery address through our Facebook Messenger interaction.</p>
+            <p>We collect personal information necessary to provide our moving crate rental services, including your name, delivery address, phone number, and email. This information is primarily collected through our interaction with you on Facebook Messenger.</p>
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-none shadow-soft rounded-3xl">
         <CardHeader>
-          <CardTitle>3. Disclosure of Personal Information</CardTitle>
+          <CardTitle>3. Use of Information</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
-            <p>We may disclose your personal information to secure payment providers and delivery logistics partners only as necessary to fulfill your order.</p>
-            <p>We do not sell your personal information to third parties.</p>
+            <p>Your details are used solely for fulfilling your order, coordinating delivery and collection, and providing customer support. We disclose your information only to secure payment providers and logistics partners as necessary.</p>
+            <p>We do not sell, rent, or trade your personal information to third parties.</p>
         </CardContent>
       </Card>
     </div>

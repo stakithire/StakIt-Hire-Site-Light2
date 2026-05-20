@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -21,7 +22,7 @@ export default function TandCPage() {
         </p>
       </header>
 
-      <Card>
+      <Card className="border-none shadow-soft rounded-3xl">
         <CardHeader>
           <CardTitle>1. Agreement to Terms</CardTitle>
         </CardHeader>
@@ -32,26 +33,36 @@ export default function TandCPage() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-none shadow-soft rounded-3xl">
         <CardHeader>
-          <CardTitle>2. Quotes and Payment</CardTitle>
+          <CardTitle>2. Booking and Payment</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
             <ul className="list-disc pl-6 space-y-2">
-                <li>Quotes are finalized via Facebook Messenger conversation.</li>
-                <li>Full payment is required prior to rental commencement.</li>
-                <li>Payments are processed via secure approved third-party providers.</li>
+                <li>All service inquiries and booking confirmations are finalized via our official Facebook Messenger chat.</li>
+                <li>Full payment is required prior to the commencement of the rental period.</li>
+                <li>Payments are processed securely via a dedicated payment link sent to you by our team.</li>
+                <li>We do not store credit card details; all transactions are handled by approved third-party payment processors.</li>
             </ul>
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-none shadow-soft rounded-3xl">
         <CardHeader>
-            <CardTitle>3. Rental Terms</CardTitle>
+            <CardTitle>3. Rental Period and Equipment Care</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
-            <p>Customers are responsible for the safe and intended use of all rented equipment during the hire period.</p>
-            <p>Fees apply for lost or damaged equipment as outlined in our pricing documentation.</p>
+            <p>The rental period begins on the day of delivery and ends on the scheduled collection date. Customers are responsible for the safe storage and intended use of all rented equipment (crates, trolleys, blankets) during this time.</p>
+            <p>Fees for lost or damaged items apply as per our standard pricing. We recommend the Box Protection Plan to cover minor, accidental box damage.</p>
+        </CardContent>
+      </Card>
+      
+      <Card className="border-none shadow-soft rounded-3xl">
+        <CardHeader>
+            <CardTitle>4. Delivery and Collection</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-muted-foreground">
+            <p>Our standard $30 flat fee covers both delivery and collection within the Greater Penrith Area. Customers must ensure a safe and accessible area for our team to drop off and pick up the crates.</p>
         </CardContent>
       </Card>
     </div>
