@@ -12,7 +12,7 @@ import placeholderImageData from '@/lib/placeholder-images.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { PackageSearch, Truck, Leaf, Sparkles, ArrowRight, MapPin, Rocket, Smile, Home, MessageCircle } from 'lucide-react';
+import { PackageSearch, Truck, Leaf, Sparkles, ArrowRight, MapPin, Rocket, Smile, Home, MessageCircle, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'StakIt Hire | Boxes That Don\'t Quit',
@@ -49,14 +49,20 @@ export default function HomePage() {
                     Everything you need to move house — delivered to your door, organised, and taken away when you&apos;re done.
                     <span className="block mt-6 font-semibold tracking-wide border-t border-white/30 pt-6">No cardboard. No chaos. No wasted time.</span>
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-6">
-                    <Button asChild size="lg" className="h-16 px-10 text-xl font-bold bg-[#6930F7] hover:bg-[#6930F7]/90 shadow-xl transition-transform hover:scale-105">
-                        <Link href="/pricing">View Our Prices</Link>
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <Button asChild size="lg" className="h-16 px-8 text-xl font-bold bg-[#6930F7] hover:bg-[#6930F7]/90 shadow-xl transition-transform hover:scale-105">
+                        <Link href="/pricing">View Prices</Link>
                     </Button>
-                    <Button asChild variant="secondary" size="lg" className="h-16 px-10 text-xl font-bold shadow-xl transition-transform hover:scale-105">
+                    <Button asChild variant="secondary" size="lg" className="h-16 px-8 text-xl font-bold shadow-xl transition-transform hover:scale-105">
                         <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
                            <MessageCircle className="mr-3 h-6 w-6" />
-                           Message us on Facebook
+                           Facebook
+                        </a>
+                    </Button>
+                    <Button asChild size="lg" className="h-16 px-8 text-xl font-bold bg-accent text-accent-foreground hover:bg-accent/90 shadow-xl transition-transform hover:scale-105 border-none">
+                        <a href="mailto:stakithire@gmail.com">
+                           <Mail className="mr-3 h-6 w-6" />
+                           Email Us
                         </a>
                     </Button>
                 </div>
@@ -198,13 +204,21 @@ export default function HomePage() {
         <section className="py-24">
             <div className="container mx-auto text-center">
                 <h2 className="text-5xl font-headline font-bold mb-6">Ready for a smarter move?</h2>
-                <p className="text-muted-foreground text-xl mb-12 max-w-2xl mx-auto">Check out our packages and message us on Facebook to book your delivery dates.</p>
-                <Button asChild size="lg" className="h-20 px-14 text-2xl font-bold shadow-premium hover:shadow-premium/80 transition-all bg-[#6930F7] rounded-2xl">
-                    <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
-                        Book via Facebook
-                        <ArrowRight className="ml-4 h-8 w-8" />
-                    </a>
-                </Button>
+                <p className="text-muted-foreground text-xl mb-12 max-w-2xl mx-auto">Check out our packages and get in touch to book your delivery dates.</p>
+                <div className="flex flex-col sm:flex-row justify-center gap-6">
+                    <Button asChild size="lg" className="h-20 px-10 text-2xl font-bold shadow-premium hover:shadow-premium/80 transition-all bg-[#6930F7] rounded-2xl">
+                        <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                            Book via Facebook
+                            <ArrowRight className="ml-4 h-8 w-8" />
+                        </a>
+                    </Button>
+                    <Button asChild size="lg" className="h-20 px-10 text-2xl font-bold shadow-premium hover:shadow-premium/80 transition-all bg-accent text-accent-foreground border-none rounded-2xl">
+                        <a href="mailto:stakithire@gmail.com">
+                            <Mail className="mr-4 h-8 w-8" />
+                            Email Our Team
+                        </a>
+                    </Button>
+                </div>
             </div>
         </section>
       </main>

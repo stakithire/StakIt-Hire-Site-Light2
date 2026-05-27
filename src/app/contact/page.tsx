@@ -54,7 +54,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                     <p className="font-semibold">Business Hours</p>
-                    <p className="text-muted-foreground">7 days a week 9am-7pm</p>
+                    <p className="text-muted-foreground">7 days a week 8am-6pm</p>
                 </div>
             </div>
           </CardContent>
@@ -62,26 +62,34 @@ export default function ContactPage() {
 
         <Card className="border-none shadow-premium bg-primary text-primary-foreground">
           <CardHeader>
-            <CardTitle className="text-white">Message us on Facebook</CardTitle>
+            <CardTitle className="text-white">Get Started</CardTitle>
             <CardDescription className="text-white/80">
                 The fastest way to get a quote and confirm your booking.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <p className="text-lg leading-relaxed">
-                Click the button below to open a chat with our team on Facebook. Just let us know:
+                Choose your preferred way to reach out. Just let us know:
             </p>
             <ul className="space-y-2 list-disc pl-5 text-white/90">
                 <li>Your preferred delivery & collection dates</li>
                 <li>The items or kit you need</li>
                 <li>Your delivery address</li>
             </ul>
-            <Button asChild size="lg" variant="secondary" className="w-full h-14 text-primary font-bold">
-                <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-5 w-5" />
-                    Open Facebook Chat
-                </a>
-            </Button>
+            <div className="flex flex-col gap-4 pt-2">
+                <Button asChild size="lg" variant="secondary" className="w-full h-14 text-primary font-bold shadow-soft hover:scale-[1.02] transition-transform">
+                    <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="mr-3 h-6 w-6" />
+                        Open Facebook Chat
+                    </a>
+                </Button>
+                <Button asChild size="lg" className="w-full h-14 bg-accent text-accent-foreground hover:bg-accent/90 border-none font-bold shadow-soft hover:scale-[1.02] transition-transform">
+                    <a href="mailto:stakithire@gmail.com">
+                        <Mail className="mr-3 h-6 w-6" />
+                        Email Us Directly
+                    </a>
+                </Button>
+            </div>
           </CardContent>
         </Card>
       </div>

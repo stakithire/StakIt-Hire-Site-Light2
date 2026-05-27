@@ -146,6 +146,20 @@ export const services: Service[] = [
     unit: 'roll',
   },
   {
+    id: 'service-11',
+    name: 'Bubble Wrap Sheets 30 Pack',
+    description: '30 pre-cut sheets (37.5cm x 33cm). Precision-sized for protecting fragile glassware and delicates with no cutting required.',
+    price: 15,
+    unit: 'pack',
+  },
+  {
+    id: 'service-12',
+    name: 'Bubble Wrap Sheets 50 Pack',
+    description: '50 pre-cut sheets (37.5cm x 33cm). High-capacity protection for extensive packing of kitchenware and valuables.',
+    price: 22,
+    unit: 'pack',
+  },
+  {
     id: 'service-02',
     name: 'Packing Paper',
     description: '800mm x 580mm, 125 sheets',

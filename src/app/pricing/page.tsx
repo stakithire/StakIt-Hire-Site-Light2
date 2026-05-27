@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import { PricingTable } from '@/components/pricing-table';
 import {
@@ -10,7 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check, Truck, MessageCircle } from 'lucide-react';
+import { ArrowRight, Check, Truck, MessageCircle, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Our Pricing | StakIt Hire',
@@ -145,14 +146,23 @@ export default function PricingPage() {
        <Card className="text-center bg-muted/50 border-none">
           <CardContent className="p-8">
               <h2 className="text-2xl font-bold">Ready to book your move?</h2>
-              <p className="text-muted-foreground mt-2 mb-6">Send us a message on Facebook with your preferred items and dates.</p>
-              <Button asChild size="lg" className="h-14 px-8 bg-[#6930F7]">
-                  <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="mr-2 h-5 w-5" />
-                      Message us on Facebook
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-              </Button>
+              <p className="text-muted-foreground mt-2 mb-6">Get in touch with your preferred items and dates.</p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <Button asChild size="lg" className="h-14 px-8 bg-[#6930F7] font-bold">
+                      <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                          <MessageCircle className="mr-2 h-5 w-5" />
+                          Message via Facebook
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                  </Button>
+                  <Button asChild size="lg" className="h-14 px-8 bg-accent text-accent-foreground hover:bg-accent/90 border-none font-bold">
+                      <a href="mailto:stakithire@gmail.com">
+                          <Mail className="mr-2 h-5 w-5" />
+                          Email Our Team
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                  </Button>
+              </div>
           </CardContent>
       </Card>
     </div>

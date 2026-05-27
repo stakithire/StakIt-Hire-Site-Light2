@@ -1,42 +1,23 @@
-# StakIt Hire - Project Documentation & Business Blueprint
+# StakIt Hire - Internal Technical Reference
 
-## 1. Business Identity
-**Name:** StakIt Hire  
-**ABN:** 72 970 045 408  
-**Tagline:** "Boxes that don’t quit — Pack. Stack. Move."  
-**Core Mission:** To revolutionize the moving process by replacing cardboard chaos with eco-friendly, durable, and stackable rental crates delivered directly to the door.  
-**Service Area:** Primary focus on the Greater Penrith Area (NSW, Australia).
+## 1. Business Core
+- **ABN:** 72 970 045 408
+- **Service Zone:** Greater Penrith Area
+- **Booking Method:** Facebook Messenger (Primary)
+- **Payment Method:** Secure Payment Links via Chat
 
----
+## 2. Component Architecture
+- **Navigation:** Top-tier global navigation with a focus on "Chat on FB" CTA.
+- **Pricing:** Dynamic pricing tables pulling from `src/lib/data.ts`.
+- **Legal:** Standalone pages for Privacy, Terms, and the Box Protection Plan.
+- **Icons:** Centralized `Icons.logo` component fetching from Flickr.
 
-## 2. Design System & User Experience (UX)
-The application is built with a "Premium-Utility" aesthetic, balancing industrial reliability with a clean, modern digital interface.
+## 3. UI/UX Standards
+- **Tone:** Friendly, local, and professional.
+- **Imagery:** High-contrast images using `next/image` for performance.
+- **Color Logic:** Primary Purple for buttons/branding; Accent Green for success/trust indicators.
 
-### 2.1 Color Palette (HSL Implementation)
-- **Background:** `#F0F4F8` (HSL 210 33% 96%)
-- **Primary:** Purple (HSL 260 80% 55%)
-- **Accent:** Green (HSL 142 60% 45%)
-- **Muted:** (HSL 210 40% 94%)
-
----
-
-## 3. Product Catalog & Detailed Pricing
-
-### 3.1 Curated Moving Kits (Bundles)
-*Prices include the first week of hire.*
-
-| Kit Name | Price | Contents | Extra Wk |
-| :--- | :--- | :--- | :--- |
-| **Studio Starter** | $115.00 | 25 Box Stak, 1x Bubble Wrap, 1x Queen Mattress Protector (Hire) | $65.00 |
-| **The Essentials** | $160.00 | 35 Box Stak, 1x Bubble Wrap, 1x Queen Protector (Hire), 1x Stickers | $90.00 |
-| **Family Move** | $235.00 | 50 Box Stak, 2x Bubble Wrap, 1x Queen & 1x Single Protector (Hire), 1x Stickers | $120.00 |
-| **Ultimate Home** | $310.00 | 70 Box Stak, 2x Bubble Wrap, 1x Packing Paper, 1x King Protector (Hire), 1x Stickers | $160.00 |
-
----
-
-## 4. Application Functionality
-
-### 4.1 Customer Experience
-- **Messenger Booking:** All bookings are finalized via Facebook Messenger.
-- **Eco-Friendly focus:** Durable, reusable plastic crates.
-- **Local Service:** Dedicated to the Greater Penrith Area.
+## 4. Workflow for Updates
+- **Pricing Changes:** Update `src/lib/data.ts`.
+- **Image Changes:** Update `src/lib/placeholder-images.json`.
+- **Text Changes:** Directly edit page components or `src/lib/data.ts`.
