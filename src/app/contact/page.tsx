@@ -1,92 +1,108 @@
+
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Mail, Clock, MessageCircle, MapPin } from 'lucide-react';
+import { ArrowRight, Mail, Clock, MessageCircle, MapPin, Send } from 'lucide-react';
 
 const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-12 py-8">
-      <header className="text-center">
-        <h1 className="text-4xl font-headline font-bold text-foreground">
-          Contact Us
+    <div className="container mx-auto max-w-5xl space-y-16 py-12 md:py-24 px-4">
+      <header className="text-center space-y-6">
+        <h1 className="text-5xl md:text-7xl font-headline font-bold text-foreground tracking-tight">
+          Get In Touch
         </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
-          Have a question or ready to book? We&apos;re just a message away.
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Ready to pack, stack, and move? Reach out via Facebook or Email for a fast quote and booking.
         </p>
       </header>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card className="border-none shadow-soft">
-          <CardHeader>
-            <CardTitle>Direct Contact</CardTitle>
-            <CardDescription>
-              Reach out to us directly via email or our service area.
+      <div className="grid md:grid-cols-2 gap-10">
+        <Card className="border-none shadow-soft rounded-3xl p-4">
+          <CardHeader className="space-y-4">
+            <CardTitle className="text-3xl font-headline">Contact Details</CardTitle>
+            <CardDescription className="text-lg">
+              Direct channels to our Penrith-based logistics team.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="h-5 w-5 text-primary" />
+          <CardContent className="space-y-8 pt-4">
+            <div className="flex items-start gap-6 group">
+                <div className="bg-primary/10 p-4 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Mail className="h-7 w-7 text-primary group-hover:text-white" />
                 </div>
                 <div>
-                    <p className="font-semibold">Email Us</p>
-                    <a href="mailto:stakithire@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <p className="font-bold text-xl mb-1">Email Us</p>
+                    <a href="mailto:stakithire@gmail.com" className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium">
                         stakithire@gmail.com
                     </a>
+                    <p className="text-sm text-muted-foreground mt-1">Checked daily for quotes and inquiries.</p>
                 </div>
             </div>
-            <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="h-5 w-5 text-primary" />
+            <div className="flex items-start gap-6 group">
+                <div className="bg-primary/10 p-4 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <MapPin className="h-7 w-7 text-primary group-hover:text-white" />
                 </div>
                 <div>
-                    <p className="font-semibold">Service Area</p>
-                    <p className="text-muted-foreground">Greater Penrith Area, NSW</p>
+                    <p className="font-bold text-xl mb-1">Our Service Area</p>
+                    <p className="text-lg text-muted-foreground font-medium">Greater Penrith Area, NSW</p>
+                    <p className="text-sm text-muted-foreground mt-1">Delivering to 20+ local suburbs.</p>
                 </div>
             </div>
-            <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                    <Clock className="h-5 w-5 text-primary" />
+            <div className="flex items-start gap-6 group">
+                <div className="bg-primary/10 p-4 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Clock className="h-7 w-7 text-primary group-hover:text-white" />
                 </div>
                 <div>
-                    <p className="font-semibold">Business Hours</p>
-                    <p className="text-muted-foreground">7 days a week 8am-6pm</p>
+                    <p className="font-bold text-xl mb-1">Business Hours</p>
+                    <p className="text-lg text-muted-foreground font-medium">7 Days a Week</p>
+                    <p className="text-sm text-muted-foreground mt-1">8:00 AM — 6:00 PM</p>
                 </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-premium bg-primary text-primary-foreground">
-          <CardHeader>
-            <CardTitle className="text-white">Get Started</CardTitle>
-            <CardDescription className="text-white/80">
-                The fastest way to get a quote and confirm your booking.
+        <Card className="border-none shadow-premium bg-primary text-primary-foreground rounded-3xl p-4 overflow-hidden relative">
+           <div className="absolute top-0 right-0 p-8 opacity-10">
+               <Send className="h-32 w-32" />
+           </div>
+          <CardHeader className="space-y-4">
+            <CardTitle className="text-3xl font-headline text-white">How to Book</CardTitle>
+            <CardDescription className="text-white/80 text-lg">
+                The fastest way to secure your crates and delivery dates.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <p className="text-lg leading-relaxed">
-                Choose your preferred way to reach out. Just let us know:
+          <CardContent className="space-y-8 pt-4">
+            <p className="text-xl leading-relaxed font-medium">
+                Choose your preferred method and let us know:
             </p>
-            <ul className="space-y-2 list-disc pl-5 text-white/90">
-                <li>Your preferred delivery & collection dates</li>
-                <li>The items or kit you need</li>
-                <li>Your delivery address</li>
+            <ul className="space-y-4 text-lg">
+                <li className="flex items-center gap-3">
+                    <div className="h-2 w-2 bg-accent rounded-full" />
+                    Preferred delivery & collection dates
+                </li>
+                <li className="flex items-center gap-3">
+                    <div className="h-2 w-2 bg-accent rounded-full" />
+                    The items or kit you need
+                </li>
+                <li className="flex items-center gap-3">
+                    <div className="h-2 w-2 bg-accent rounded-full" />
+                    Your delivery address
+                </li>
             </ul>
-            <div className="flex flex-col gap-4 pt-2">
-                <Button asChild size="lg" variant="secondary" className="w-full h-14 text-primary font-bold shadow-soft hover:scale-[1.02] transition-transform">
+            <div className="flex flex-col gap-4 pt-4">
+                <Button asChild size="lg" variant="secondary" className="w-full h-16 text-xl font-bold shadow-soft hover:scale-[1.02] transition-transform rounded-2xl">
                     <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
-                        <MessageCircle className="mr-3 h-6 w-6" />
-                        Open Facebook Chat
+                        <MessageCircle className="mr-3 h-7 w-7" />
+                        Chat via Facebook
                     </a>
                 </Button>
-                <Button asChild size="lg" className="w-full h-14 bg-accent text-accent-foreground hover:bg-accent/90 border-none font-bold shadow-soft hover:scale-[1.02] transition-transform">
+                <Button asChild size="lg" className="w-full h-16 bg-accent text-accent-foreground hover:bg-accent/90 border-none text-xl font-bold shadow-soft hover:scale-[1.02] transition-transform rounded-2xl">
                     <a href="mailto:stakithire@gmail.com">
-                        <Mail className="mr-3 h-6 w-6" />
-                        Email Us Directly
+                        <Mail className="mr-3 h-7 w-7" />
+                        Email Our Team
                     </a>
                 </Button>
             </div>
@@ -94,18 +110,18 @@ export default function ContactPage() {
         </Card>
       </div>
 
-      <Card className="text-center bg-muted/50 border-none shadow-soft">
+      <Card className="text-center bg-muted/50 border-none shadow-soft rounded-3xl p-8">
           <CardHeader>
-            <CardTitle>View Our Packages</CardTitle>
-            <CardDescription>
-                Not sure what you need? Check out our curated moving kits.
+            <CardTitle className="text-3xl font-headline">Not Sure What You Need?</CardTitle>
+            <CardDescription className="text-xl">
+                Browse our curated moving bundles for a quick setup.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-              <Button asChild variant="outline">
+          <CardContent className="pt-6">
+              <Button asChild size="lg" className="px-10 h-14 text-lg font-bold rounded-xl shadow-soft">
                   <Link href="/pricing">
                       View Pricing & Kits
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-3 h-5 w-5" />
                   </Link>
               </Button>
           </CardContent>

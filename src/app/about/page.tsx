@@ -47,10 +47,13 @@ export default function AboutPage() {
             <CardContent className="p-8 md:p-12 lg:p-16 text-muted-foreground space-y-10 text-lg md:text-xl leading-relaxed">
                <div className="space-y-6">
                 <p>
-                    Moving is one of life’s biggest headaches — but it doesn’t have to be. Most of the stress doesn’t come from the move itself… it comes from everything leading up to it. Finding boxes. Fighting with tape. Hoping they don’t collapse halfway to the car. Digging through piles of mismatched cardboard and scrunched-up packing paper.
+                    Moving is one of life’s biggest headaches — but it doesn’t have to be. Most of the stress doesn’t come from the move itself… it comes from everything leading up to it. Finding boxes that have been sitting in a garage for years, fighting with rolls of tape that never seem to stick, and the constant worry that a flimsy cardboard base might collapse halfway to the car. 
                   </p>
                   <p>
-                    We saw the frustration and decided there was a better way. StakIt Hire was born to provide a service that is as reliable as the boxes we hire.
+                    We’ve all seen the chaos: mismatched boxes, scrunched-up newspaper, and the inevitable mountain of waste that ends up on the curb after moving day. We saw the frustration and decided there was a better way. StakIt Hire was born out of a simple observation: the tools we use for one of the most important transitions in our lives were outdated, unreliable, and incredibly wasteful.
+                  </p>
+                  <p>
+                    We decided to build a service that is as reliable as the boxes we hire. We didn't just want to provide crates; we wanted to provide a smarter, more community-focused system for our neighbors in Penrith.
                   </p>
                </div>
                 
@@ -63,10 +66,13 @@ export default function AboutPage() {
 
                 <div className="space-y-6">
                   <p>
-                    We deliver the crates to your door, you pack at your own pace, stack them securely, move with confidence, and we collect them when you’re done. That’s it. Zero waste. Zero fuss. Zero “oh no, the box just tore.”
+                    We believe that a move should be marked by excitement for a new chapter, not exhaustion from the preparation. By providing high-capacity, industrial-strength crates, we take the guesswork out of packing. We deliver the crates to your door, you pack at your own pace, stack them securely, move with confidence, and we collect them when you’re done. 
                   </p>
                   <p>
-                    As a local business serving the Greater Penrith Area, we take pride in helping our neighbors transition into their new homes with one less thing to worry about.
+                    That’s it. Zero waste to dispose of, zero rolls of tape to struggle with, and zero "oh no, the box just tore" moments. It’s a cleaner, faster, and more sustainable way to get where you’re going.
+                  </p>
+                  <p>
+                    As a local business serving the Greater Penrith Area, we take pride in helping our neighbors transition into their new homes with one less thing to worry about. We aren't just a hire service; we are your partners in making your next move your best move.
                   </p>
                 </div>
             </CardContent>

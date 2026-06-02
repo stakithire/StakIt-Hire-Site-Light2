@@ -1,88 +1,120 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-import { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShieldCheck, ShieldOff } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Box Protection Plan | StakIt Hire',
-};
-
-export default function DamageWaiverPage() {
+export default function LegalPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-8 py-12">
-      <header className="text-center">
-        <h1 className="text-4xl font-headline font-bold text-foreground">
+    <div className="container mx-auto max-w-4xl space-y-12 py-12 md:py-24">
+      <header className="text-center space-y-6">
+        <h1 className="text-4xl font-headline font-bold text-foreground tracking-tighter sm:text-5xl md:text-6xl">
           Box Protection Plan
         </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
-          Your peace of mind, covered.
-        </p>
+        <div className="text-lg text-muted-foreground space-y-1">
+          <p>Business Name: StakIt Hire</p>
+          <p>ABN: 72 970 045 408</p>
+          <p>Last Updated: 30 May 2026</p>
+          <p className="font-bold text-primary pt-2">Plan Fee: $20.00 (Flat Fee Per Booking)</p>
+        </div>
       </header>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>1. The Optional Box Protection Plan</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-muted-foreground">
-          <p>
-            For a flat fee of <strong>$20.00</strong>, customers can add our optional Box Protection Plan to their order. This plan is designed to provide peace of mind by covering the cost of minor, accidental damage to our moving boxes during your rental period.
-          </p>
-        </CardContent>
-      </Card>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card className="border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-900/10">
-            <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-green-800 dark:text-green-300">
-                <ShieldCheck /> What Is Covered
-            </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
-                <p>The Box Protection Plan covers the standard $20.00 damage fee for up to **three (3) individual moving boxes**.</p>
-                <p>This includes minor damages that can occur during a typical move, such as:</p>
-                <ul className="list-disc pl-6 space-y-1">
-                    <li>Small cracks or chips</li>
-                    <li>Scuffs and deep scratches</li>
-                    <li>Minor damage to lids or handles</li>
-                </ul>
-                <p>If the plan is purchased, you will not be charged for the first three boxes found to have such damage upon inspection.</p>
-            </CardContent>
+      <section className="space-y-8">
+        <Card className="border-none shadow-soft rounded-3xl overflow-hidden">
+          <CardHeader className="bg-primary/5 border-b border-primary/10">
+            <CardTitle className="font-headline text-2xl">1. Overview</CardTitle>
+          </CardHeader>
+          <CardContent className="p-8 space-y-4 text-muted-foreground text-lg leading-relaxed">
+            <p>
+              The Box Protection Plan is an optional add-on available to customers hiring StakIt Hire moving crates.
+            </p>
+            <p>
+              The plan is designed to provide peace of mind by covering the standard damage fee for a limited number of crates that sustain accidental damage during the rental period.
+            </p>
+            <p>
+              The Box Protection Plan is not insurance and does not cover all forms of damage, loss or misuse.
+            </p>
+          </CardContent>
         </Card>
 
-        <Card className="border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-900/10">
-            <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-red-800 dark:text-red-300">
-                <ShieldOff /> What Is NOT Covered
-            </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
-                <p>To protect our assets and keep the plan affordable, the following are explicitly excluded from coverage:</p>
-                <ul className="list-disc pl-6 space-y-2 font-medium">
-                    <li>Lost, stolen, or unreturned equipment of any kind.</li>
-                    <li>Major or catastrophic damage due to misuse or negligence (e.g., boxes returned in pieces).</li>
-                    <li>Damage to any non-box items, including trolleys, blankets, mattress protectors, etc.</li>
-                </ul>
-                <p>Standard fees as outlined in our Terms and Conditions will apply to any of the situations listed above, regardless of whether the Box Protection Plan was purchased.</p>
-            </CardContent>
+        {/* Section 2: Green Background */}
+        <Card className="border-none shadow-soft rounded-3xl overflow-hidden bg-accent/10">
+          <CardHeader className="bg-accent/10 border-b border-accent/20">
+            <CardTitle className="font-headline text-2xl text-accent-foreground">2. What Is Covered</CardTitle>
+          </CardHeader>
+          <CardContent className="p-8 space-y-4 text-muted-foreground text-lg leading-relaxed">
+            <p>
+              Where the Box Protection Plan has been purchased, StakIt Hire will waive the standard $20.00 damage fee for up to three (3) individual moving crates that sustain accidental damage during the rental period.
+            </p>
+            <p className="font-semibold text-foreground">Examples of covered accidental damage may include:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Small cracks or chips in the plastic.</li>
+              <li>Deep scuffs or scratches from normal moving activities.</li>
+              <li>Minor damage to lids, hinges or handles.</li>
+              <li>Other similar accidental damage assessed by StakIt Hire as repairable.</li>
+            </ul>
+            <div className="bg-accent/5 p-6 rounded-2xl border border-accent/10 mt-6">
+              <p className="font-bold text-foreground mb-2">Example Scenario:</p>
+              <ul className="space-y-1">
+                <li>• 2 damaged crates = $0 charge.</li>
+                <li>• 3 damaged crates = $0 charge.</li>
+                <li>• 5 damaged crates = $40 charge (2 chargeable crates × $20).</li>
+              </ul>
+            </div>
+          </CardContent>
         </Card>
-      </div>
+        
+        {/* Section 3: Red Background */}
+        <Card className="border-none shadow-soft rounded-3xl overflow-hidden bg-destructive/10">
+          <CardHeader className="bg-destructive/5 border-b border-destructive/10">
+            <CardTitle className="font-headline text-2xl text-destructive">3. What Is Not Covered</CardTitle>
+          </CardHeader>
+          <CardContent className="p-8 space-y-8 text-muted-foreground text-lg leading-relaxed">
+            <div className="space-y-3">
+              <h4 className="font-bold text-foreground">Loss or Theft</h4>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Lost, missing, stolen, or unreturned crates.</li>
+              </ul>
+              <p className="text-sm italic">Standard recovery charges ($35 per box) apply.</p>
+            </div>
+            <div className="space-y-3">
+              <h4 className="font-bold text-foreground">Catastrophic or Severe Damage</h4>
+              <p>The plan does not cover crates that are:</p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Destroyed, melted, or deliberately damaged.</li>
+                <li>Damaged through misuse, abuse or negligence.</li>
+                <li>Damaged beyond economical repair.</li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <h4 className="font-bold text-foreground">Non-Crate Equipment</h4>
+              <p>The Box Protection Plan does not cover:</p>
+              <ul className="list-disc pl-6 space-y-1 text-sm">
+                <li>Hand trolleys, Stair climbers, Moving blankets, Mattress protectors, TV protectors, or Cool boxes.</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
 
-       <Card>
-        <CardHeader>
-          <CardTitle>2. How It Works</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-muted-foreground">
-          <p>
-            After your rental period ends and the equipment is collected, our team inspects all items.
-          </p>
-          <ul className="list-decimal pl-6 space-y-2">
-            <li>We first count all returned items. The standard fees for any lost items are calculated.</li>
-            <li>We then inspect the returned moving boxes for damage.</li>
-            <li>If you have purchased the Box Protection Plan, we will not charge you for the first three (3) boxes that have minor damage. If more than three boxes are damaged, you will only be charged the standard $20 fee for each additional damaged box (e.g., if five boxes are damaged, you pay for two).</li>
-            <li>If you have not purchased the plan, the standard $20 fee applies to every damaged box.</li>
-          </ul>
-        </CardContent>
-      </Card>
+        <Card className="border-none shadow-soft rounded-3xl overflow-hidden">
+          <CardHeader className="bg-primary/5 border-b border-primary/10">
+            <CardTitle className="font-headline text-2xl">4. Assessment Process</CardTitle>
+          </CardHeader>
+          <CardContent className="p-8 space-y-4 text-muted-foreground text-lg leading-relaxed">
+            <p>All equipment is inspected upon collection. Where damage is identified:</p>
+            <ol className="list-decimal pl-6 space-y-2">
+              <li>Equipment is inspected by the StakIt Hire logistics team.</li>
+              <li>Photographs and supporting evidence are collected.</li>
+              <li>The Box Protection Plan is applied automatically to eligible items.</li>
+            </ol>
+          </CardContent>
+        </Card>
+
+        <Card className="border-none shadow-soft rounded-3xl overflow-hidden">
+          <CardHeader className="bg-primary/5 border-b border-primary/10">
+            <CardTitle className="font-headline text-2xl">5. Relationship With Terms and Conditions</CardTitle>
+          </CardHeader>
+          <CardContent className="p-8 space-y-4 text-muted-foreground text-lg leading-relaxed">
+            <p>This Box Protection Plan forms part of the StakIt Hire Terms and Conditions. In the event of any inconsistency, the StakIt Hire Terms and Conditions will prevail. Nothing in this plan excludes or limits any rights available under the Australian Consumer Law.</p>
+          </CardContent>
+        </Card>
+      </section>
     </div>
-  );
+  )
 }

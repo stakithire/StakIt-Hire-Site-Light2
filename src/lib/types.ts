@@ -30,3 +30,14 @@ export type CarouselItem = {
   imageUrl: string;
   imageHint: string;
 };
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  imageUrl: string;
+  imageHint: string;
+  content: string[]; // Array of paragraphs for the simple static rollout
+};

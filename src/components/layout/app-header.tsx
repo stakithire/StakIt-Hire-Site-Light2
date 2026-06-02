@@ -13,6 +13,7 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/pricing', label: 'Pricing & Kits' },
   { href: '/about', label: 'About Us' },
+  { href: '/blog', label: 'The StakIt Guide' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -42,7 +43,7 @@ export function AppHeader() {
                 href={item.href}
                 className={cn(
                   "text-sm font-bold tracking-tight uppercase transition-colors hover:text-primary",
-                  pathname === item.href ? "text-primary" : "text-muted-foreground"
+                  pathname === item.href || (item.href === '/blog' && pathname.startsWith('/blog')) ? "text-primary" : "text-muted-foreground"
                 )}
               >
                 {item.label}
@@ -83,7 +84,7 @@ export function AppHeader() {
                       onClick={() => setOpen(false)}
                       className={cn(
                         "text-xl font-bold tracking-tight p-4 rounded-xl transition-all",
-                        pathname === item.href 
+                        pathname === item.href || (item.href === '/blog' && pathname.startsWith('/blog'))
                           ? "bg-primary/10 text-primary" 
                           : "text-muted-foreground hover:bg-muted"
                       )}

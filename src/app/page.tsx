@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import {
   Card,
@@ -20,6 +19,14 @@ export const metadata: Metadata = {
 };
 
 const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
+
+const serviceSuburbs = [
+  "Penrith", "South Penrith", "Glenmore Park", "Jordan Springs", 
+  "Cranebrook", "Emu Plains", "Emu Heights", "Werrington", 
+  "Werrington County", "Caddens", "Claremont Meadows", "Orchard Hills", 
+  "Leonay", "Mulgoa", "Silverdale", "Wallacia", "Warragamba", "Jamisontown",
+  "Llandilo", "Regentville"
+];
 
 export default function HomePage() {
   const { placeholderImages } = placeholderImageData;
@@ -70,16 +77,32 @@ export default function HomePage() {
         </section>
 
         <section className="container mx-auto px-4">
-            <Card className="bg-primary/5 border-primary/20 shadow-soft rounded-3xl">
-                <CardContent className="p-10 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8">
-                    <div className="bg-primary/10 p-5 rounded-full">
-                        <MapPin className="h-10 w-10 text-primary" />
+            <Card className="bg-primary/5 border-primary/20 shadow-soft rounded-[2.5rem] overflow-hidden">
+                <CardContent className="p-10">
+                    <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8 mb-8">
+                        <div className="bg-primary/10 p-5 rounded-3xl">
+                            <MapPin className="h-10 w-10 text-primary" />
+                        </div>
+                        <div>
+                            <h2 className="text-3xl font-headline font-bold text-foreground">Currently Servicing the Greater Penrith Area</h2>
+                            <p className="text-muted-foreground text-lg mt-2 max-w-2xl">
+                                Our standard delivery zone covers the greater Penrith region. If you are outside this area, please message us for a custom quote. 
+                                <span className="block mt-2 font-bold text-primary">Note: Delivery costs may vary for custom quotes.</span>
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 className="text-2xl font-headline font-bold text-foreground">Currently Servicing the Greater Penrith Area</h2>
-                        <p className="text-muted-foreground text-lg mt-2 max-w-2xl">
-                            Our standard delivery zone covers the greater Penrith region. If you are outside this area, please message us for a custom quote.
-                        </p>
+                    <div className="border-t border-primary/10 pt-10">
+                        <p className="text-center font-bold text-foreground uppercase tracking-widest text-sm mb-8">Major Suburbs Covered</p>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                            {serviceSuburbs.map(suburb => (
+                                <div key={suburb} className="group relative">
+                                    <div className="absolute inset-0 bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="relative bg-white border-2 border-primary/10 text-primary px-4 py-3 rounded-2xl text-center text-sm font-bold shadow-sm transition-all duration-300 group-hover:border-primary group-hover:shadow-soft group-hover:-translate-y-1">
+                                        {suburb}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </CardContent>
             </Card>

@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import { PricingTable } from '@/components/pricing-table';
 import {
@@ -11,7 +10,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check, Truck, MessageCircle, Mail } from 'lucide-react';
+import { ArrowRight, Check, Truck, MessageCircle, Mail, Ruler, ShieldCheck, Box } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Our Pricing | StakIt Hire',
@@ -39,7 +38,7 @@ export default function PricingPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-4xl space-y-12">
+    <div className="container mx-auto max-w-4xl space-y-12 py-8">
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-foreground">
           Our Pricing
@@ -71,6 +70,48 @@ export default function PricingPage() {
             </CardContent>
           }
         />
+
+        {/* Crate Specs Card */}
+        <Card className="border-none shadow-premium bg-primary text-primary-foreground overflow-hidden">
+            <div className="grid md:grid-cols-3">
+                <div className="p-8 md:col-span-2 space-y-6">
+                    <div>
+                        <h2 className="text-2xl font-headline font-bold flex items-center gap-3">
+                            <Box className="h-8 w-8 text-accent" />
+                            Premium Crate Specifications
+                        </h2>
+                        <p className="text-primary-foreground/80 mt-2">Our crates are 100L — significantly larger and stronger than industry standard.</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-6">
+                        <div className="space-y-1">
+                            <p className="text-xs uppercase tracking-widest text-primary-foreground/60 font-bold">Capacity</p>
+                            <p className="text-2xl font-bold">100 Litres</p>
+                        </div>
+                        <div className="space-y-1">
+                            <p className="text-xs uppercase tracking-widest text-primary-foreground/60 font-bold">Dimensions</p>
+                            <p className="text-lg font-bold">778(L) x 528(W) x 378(H)mm</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold">
+                            <ShieldCheck className="h-4 w-4" /> IP65 Certified
+                        </div>
+                        <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold">
+                            <ShieldCheck className="h-4 w-4" /> UV Resistant
+                        </div>
+                         <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold">
+                            <ShieldCheck className="h-4 w-4" /> Nest & Stack
+                        </div>
+                    </div>
+                </div>
+                <div className="bg-white/5 p-8 flex flex-col justify-center border-l border-white/10">
+                    <div className="space-y-4">
+                        <p className="text-sm font-medium italic">"Built for real moves. Our dust and water resistant design keeps your valuables safe in any weather."</p>
+                        <div className="h-1 w-12 bg-accent rounded-full" />
+                    </div>
+                </div>
+            </div>
+        </Card>
 
         <PricingTable
           title="Optional Add-Ons"

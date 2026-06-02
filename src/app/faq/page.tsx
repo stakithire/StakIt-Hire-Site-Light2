@@ -9,85 +9,101 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail, MessageCircle, Info } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'FAQ | StakIt Hire',
-  description: 'Frequently asked questions about our equipment rental services.',
+  description: 'Frequently asked questions about our 100L moving crate rentals in the Greater Penrith Area.',
 };
 
 const faqSections = {
     "Booking & Ordering": [
         {
             question: "How do I book my move?",
-            answer: "Booking is simple! Just browse our packages and message us on Facebook Messenger. Let us know your preferred delivery and collection dates, the items you need, and your delivery address. We'll confirm everything with you in the chat."
+            answer: "Booking is fast and manual! Simply message us on Facebook Messenger or send an email to stakithire@gmail.com. Let us know your preferred dates, the items or kit you need, and your delivery address. We will provide a quote and confirm your booking promptly."
         },
         {
-            question: "Do I need to create an account?",
-            answer: "No account is required. We manage everything directly through our official Facebook Messenger chat to keep things fast and easy for you."
+            question: "Can I book via email instead of Facebook?",
+            answer: "Yes, absolutely. We offer full support via email for quotes and bookings. Just reach out to stakithire@gmail.com and our team will assist you with everything you need."
         },
         {
             question: "How far in advance should I book?",
-            answer: "We recommend booking at least one to two weeks in advance to ensure availability, especially during peak moving seasons. However, we will always do our best to accommodate last-minute requests via Messenger."
+            answer: "We recommend booking at least 1-2 weeks in advance to secure your preferred delivery and collection windows, especially for weekend moves. However, we always try to accommodate last-minute requests where stock is available."
         },
         {
-            question: "Can I change my order after it has been placed?",
-            answer: "Yes, you can modify your order up to 48 hours before your scheduled delivery date, subject to availability. Just send us a message in our Facebook chat and we will update your booking."
+            question: "Is there a minimum order?",
+            answer: "We don't have a strict minimum order, but our $30 flat delivery/collection fee applies to all orders, so most customers find our 25-box 'Studio Starter' or larger kits offer the best value."
         }
     ],
     "Pricing & Payment": [
         {
             question: "When and how do I pay?",
-            answer: "Once we have finalized your booking details in Messenger, we will send you a secure payment link. You can complete your payment safely online through this link using your preferred method. Payment must be completed before the delivery is scheduled."
+            answer: "Once your booking details are finalized, we will provide a secure payment link or our bank details for a direct transfer via Facebook or Email. Please note that if paying via bank transfer, funds must be cleared in our account before your order can be confirmed and your delivery scheduled."
         },
         {
-            question: "What is the standard hire period?",
-            answer: "Our standard hire period is one week, which is included in your package price. If you need the crates for longer, we offer affordable weekly extensions which we can calculate for you during our chat."
+            question: "What payment methods do you accept?",
+            answer: "We accept all major credit and debit cards via our secure payment links, as well as direct bank transfers. For bank transfers, please ensure you allow enough time for funds to clear before your required delivery date."
+        },
+        {
+            question: "What is included in the kit prices?",
+            answer: "All our kit prices include the first full week of hire. If you need more time, we offer affordable 'Extra Week' rates which are significantly cheaper than the initial hire week."
         },
         {
             question: "What is the Box Protection Plan?",
-            answer: "The Box Protection Plan is an optional $20 add-on that provides peace of mind. It covers the standard $20 damage fee for up to three (3) of our moving boxes. Please note it does not cover lost items or damage to other equipment like trolleys. You can read the full details on our Box Protection Plan policy page."
+            answer: "For just $20 per order, the Box Protection Plan covers the $20 damage fee for up to three (3) of our moving boxes. It's designed for peace of mind against accidental minor cracks or scuffs. Note: It does not cover lost items or damage to trolleys."
         },
         {
-            question: "What happens if I damage or lose equipment?",
-            answer: "We understand accidents happen. A fee of $20 per damaged box and $35 per lost box will be charged. For high-value items like trolleys, replacement fees apply. We recommend the Box Protection Plan for minor box damage."
+            question: "Are there any hidden fees?",
+            answer: "No. We believe in transparency. You pay for your items/kit, a flat $30 delivery/collection fee (within our standard area), and the optional Protection Plan if you choose it. Fees only apply if items are lost, heavily damaged, or if a delivery/collection fails due to customer absence."
         }
     ],
     "Delivery & Logistics": [
         {
-            question: "What areas do you deliver to?",
-            answer: "We currently service the Greater Penrith Area. Delivery to our standard service zone is included in the flat $30 delivery/collection fee. If you are just outside this area, message us and we may be able to provide a custom quote."
+            question: "Do I need to be home for delivery or collection?",
+            answer: "Yes. To verify inventory counts and ensure equipment is placed correctly, a suitable adult (18+) must be present at the address for both delivery and collection to sign off on the handover."
         },
         {
             question: "What does the delivery fee cover?",
-            answer: "Our $30 delivery fee is a flat rate that covers both the drop-off of your equipment at the start of your move and the collection from your address at the end of the rental period."
+            answer: "Our flat $30 fee covers the entire logistics process: the delivery of the crates to your door and the final collection from your new address at the end of the hire period."
         },
         {
-            question: "What if I'm not home for delivery or collection?",
-            answer: "That's fine! As long as there is a safe and accessible place for us to leave or retrieve the equipment (like a porch or garage), you don't need to be home. Just let us know the details in our Messenger chat."
+            question: "What if my new house has stairs?",
+            answer: "Our crates are stackable and easy to move with the right equipment. We highly recommend hiring one of our 300kg Hand Trolleys or our 180kg Stair Climber Trolleys to make navigating stairs or driveways much easier."
+        },
+        {
+            question: "Can I change my collection date after I've booked?",
+            answer: "We understand moving dates can shift. Please give us at least 48 hours' notice if you need to change your collection date. Changes are subject to equipment availability and may incur additional hire fees."
         }
     ],
-    "Using the Equipment": [
+    "The Equipment": [
         {
-            question: "Do I need to clean the boxes?",
-            answer: "We professionally clean and sanitize every box between uses, so you don't have to worry about a deep clean. We just ask that they are returned empty and free of heavy soil or permanent markers."
+            question: "How big are the StakIt boxes?",
+            answer: "Our crates are a high-capacity 100L — significantly larger than standard moving boxes. Dimensions are 778mm (L) x 528mm (W) x 378mm (H). They are UV resistant, water-resistant, and dust-resistant (IP65 Certified)."
         },
         {
-            question: "Can I use my own labels?",
-            answer: "We provide dedicated space on each box for labels and sell moving sticker packs to keep you organized. Please avoid using strong adhesives or permanent markers directly on the plastic to avoid cleaning fees."
+            question: "Are the boxes clean and sanitized?",
+            answer: "Hygiene is a priority. Every single crate and piece of equipment is thoroughly cleaned and sanitized by our team before it is delivered to a new customer."
+        },
+        {
+            question: "Can I use my own labels or tape on the boxes?",
+            answer: "Our boxes have dedicated areas for labels. We recommend using our Moving Sticker Packs, as they are designed to be easily removed. Please do not use permanent markers or high-tack industrial tapes directly on the plastic crates."
+        },
+        {
+            question: "How high can I stack the boxes?",
+            answer: "Our crates are designed to nest when empty and stack securely when full. We recommend stacking them no more than 4-5 high when full to ensure stability and safety during transport."
         }
     ]
 };
 
 export default function FAQPage() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-12 py-8">
-      <header className="text-center">
-        <h1 className="text-4xl font-headline font-bold text-foreground">
-          Frequently Asked Questions
+    <div className="container mx-auto max-w-4xl space-y-12 py-12 md:py-24 px-4">
+      <header className="text-center space-y-6">
+        <h1 className="text-5xl md:text-6xl font-headline font-bold text-foreground tracking-tight">
+          Got Questions?
         </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
-          Everything you need to know about moving with StakIt Hire.
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Everything you need to know about packing, stacking, and moving with the Greater Penrith Area's premium crate hire service.
         </p>
       </header>
 
@@ -95,14 +111,17 @@ export default function FAQPage() {
         {Object.entries(faqSections).map(([sectionTitle, items]) => (
              <Card key={sectionTitle} className="border-none shadow-soft rounded-3xl overflow-hidden">
                 <CardHeader className="bg-primary/5 border-b border-primary/10">
-                    <CardTitle className="font-headline text-2xl">{sectionTitle}</CardTitle>
+                    <CardTitle className="font-headline text-2xl flex items-center gap-3">
+                        <Info className="h-6 w-6 text-primary" />
+                        {sectionTitle}
+                    </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
                     <Accordion type="single" collapsible className="w-full">
                         {items.map((item, index) => (
                             <AccordionItem value={`${sectionTitle}-${index}`} key={index} className="px-6 border-b-primary/5 last:border-0">
-                                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline py-6">
-                                    {item.question}
+                                <AccordionTrigger className="text-left font-bold text-lg hover:no-underline py-6 group">
+                                    <span className="group-hover:text-primary transition-colors">{item.question}</span>
                                 </AccordionTrigger>
                                 <AccordionContent className="text-base text-muted-foreground pb-6 leading-relaxed">
                                     {item.answer}
@@ -115,19 +134,26 @@ export default function FAQPage() {
         ))}
       </div>
 
-      <Card className="text-center bg-primary text-primary-foreground border-none shadow-premium py-12 px-6 rounded-3xl">
+      <Card className="text-center bg-primary text-primary-foreground border-none shadow-premium py-16 px-8 rounded-3xl">
           <CardHeader>
-            <CardTitle className="text-3xl font-headline font-bold">Still have questions?</CardTitle>
-            <CardDescription className="text-primary-foreground/80 text-lg mt-2">
-                We're here to help you get moving.
+            <CardTitle className="text-4xl md:text-5xl font-headline font-bold">Still Need Help?</CardTitle>
+            <CardDescription className="text-xl text-primary-foreground/80 mt-4">
+                Our local team is ready to answer any specific questions via your preferred channel.
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-6">
-              <Button asChild size="lg" variant="secondary" className="font-bold h-14 px-8">
-                  <Link href="/contact">
-                      Contact Our Team
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
+          <CardContent className="pt-10 flex flex-col sm:flex-row justify-center gap-6">
+              <Button asChild size="lg" variant="secondary" className="h-16 px-10 text-xl font-bold shadow-soft transition-transform hover:scale-105 rounded-2xl">
+                  <a href="https://www.facebook.com/stakithire" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="mr-3 h-7 w-7" />
+                      Chat on Facebook
+                      <ArrowRight className="ml-3 h-6 w-6" />
+                  </a>
+              </Button>
+              <Button asChild size="lg" className="h-16 px-10 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
+                  <a href="mailto:stakithire@gmail.com">
+                      <Mail className="mr-3 h-7 w-7" />
+                      Email Our Team
+                  </a>
               </Button>
           </CardContent>
       </Card>
