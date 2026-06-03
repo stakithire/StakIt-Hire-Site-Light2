@@ -12,6 +12,19 @@ interface BlogPostPageProps {
   };
 }
 
+/**
+ * Ensures all blog posts are pre-rendered at build time.
+ * This prevents 404 errors on static hosting platforms.
+ */
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+// Disables dynamic generation for routes not in the static params list.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) return { title: 'Post Not Found' };
@@ -29,9 +42,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Simple parser to handle bold text **text** and bullet points
   const renderParagraph = (text: string) => {
-    // Check for bold parts
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith('**') && part.endsWith('**')) {
@@ -77,7 +88,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
       <div className="prose prose-lg max-w-none space-y-6">
         {post.content.map((paragraph, index) => {
-          // Handle Headings (##)
           if (paragraph.startsWith('## ')) {
             return (
               <h2 key={index} className="text-3xl font-headline font-bold text-foreground pt-8 pb-2">
@@ -86,7 +96,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             );
           }
 
-          // Handle Bullet Points (*)
           if (paragraph.startsWith('* ')) {
             return (
               <ul key={index} className="list-none space-y-2">
@@ -98,7 +107,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             );
           }
 
-          // Handle "Check" list items (✔)
           if (paragraph.startsWith('✔ ')) {
              return (
               <div key={index} className="flex items-start gap-3 text-lg md:text-xl text-muted-foreground py-1">
@@ -108,7 +116,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             );
           }
 
-          // Regular Paragraphs
           return (
             <p key={index} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               {renderParagraph(paragraph)}
