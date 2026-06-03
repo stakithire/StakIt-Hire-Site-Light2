@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AppHeader } from '@/components/layout/app-header';
 import { AppFooter } from '@/components/layout/app-footer';
 import { BackToTopButton } from '@/components/layout/back-to-top-button';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'StakIt Hire | Boxes That Don\'t Quit',
@@ -23,6 +24,19 @@ export default function RootLayout({
           'min-h-screen bg-background font-sans antialiased',
         )}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Z8TN3DES2Z"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-Z8TN3DES2Z');
+          `}
+        </Script>
         <div 
           className="fixed inset-0 z-0 bg-center bg-no-repeat opacity-[0.15] pointer-events-none" 
           style={{ backgroundImage: 'url(/watermark.png)', backgroundSize: '40%' }}
