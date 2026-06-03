@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import { blogPosts } from '@/lib/blog-data';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,7 @@ import { notFound } from 'next/navigation';
 const SLUG = 'why-100l-crates-are-the-penrith-moving-secret';
 
 export const metadata: Metadata = {
-  title: 'Why 100L Crates are the Penrith Moving Secret | The StakIt Guide',
+  title: 'Why 100L Crates are the Penrith Moving Secret | The StakIt Journal',
   description: 'Discover why standard moving boxes just don\'t cut it when compared to our industrial-strength 100L crates.',
 };
 
@@ -35,7 +34,7 @@ export default function BlogPostPage() {
     <article className="container mx-auto max-w-4xl py-12 md:py-24 px-4 space-y-12">
       <Link href="/blog" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors font-medium gap-2">
         <ArrowLeft className="h-4 w-4" />
-        Back to The StakIt Guide
+        Back to The StakIt Journal
       </Link>
 
       <header className="space-y-6">

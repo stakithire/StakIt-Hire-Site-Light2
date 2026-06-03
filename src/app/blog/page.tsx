@@ -7,7 +7,7 @@ import { blogPosts } from '@/lib/blog-data';
 import { ArrowRight, Calendar, Tag } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'The StakIt Guide | Moving Tips & Insights',
+  title: 'The StakIt Journal | Moving Tips & Insights',
   description: 'Expert advice, packing guides, and local Penrith moving stories to help you pack, stack, and move with ease.',
 };
 
@@ -16,7 +16,7 @@ export default function BlogPage() {
     <div className="container mx-auto max-w-6xl py-12 md:py-24 px-4 space-y-16">
       <header className="text-center space-y-6">
         <h1 className="text-5xl md:text-7xl font-headline font-bold text-foreground tracking-tight">
-          The StakIt Guide
+          The StakIt Journal
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           Smarter packing tips and local stories to make your next move your best move.

@@ -13,7 +13,7 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/pricing', label: 'Pricing & Kits' },
   { href: '/about', label: 'About Us' },
-  { href: '/blog', label: 'The StakIt Guide' },
+  { href: '/blog', label: 'The StakIt Journal' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
