@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
@@ -35,8 +34,8 @@ import {
 const MESSENGER_URL = "https://m.me/stakithire";
 
 export default function QuoteCalculatorPage() {
-  const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(addDays(new Date(), 7));
-  const [collectionDate, setCollectionDate] = useState<Date | undefined>(addDays(new Date(), 14));
+  const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(() => addDays(new Date(), 7));
+  const [collectionDate, setCollectionDate] = useState<Date | undefined>(() => addDays(new Date(), 14));
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [options, setOptions] = useState<Record<string, 'hire' | 'purchase'>>({});
 
@@ -304,7 +303,7 @@ export default function QuoteCalculatorPage() {
                     <span className="text-muted-foreground">Delivery & Collection</span>
                     <span className="font-medium">${deliveryFee.toFixed(2)}</span>
                   </div>
-                  <p className="text-[10px] text-muted-foreground italic leading-tight">
+                  <p className="text-[10px] text-center text-muted-foreground italic leading-tight px-4">
                     $30 delivery is only for local approved suburbs. Other locations are subject to an additional fee.
                   </p>
                 </div>
