@@ -1,8 +1,9 @@
+
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, MessageCircle } from 'lucide-react';
+import { Menu, MessageCircle, Calculator } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -12,10 +13,10 @@ import { useState } from 'react';
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/pricing', label: 'Pricing & Kits' },
+  { href: '/quote', label: 'Quote Calculator' },
   { href: '/about', label: 'About Us' },
   { href: '/blog', label: 'The StakIt Journal' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
