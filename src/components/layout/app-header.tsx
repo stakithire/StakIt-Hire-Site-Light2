@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, MessageCircle } from 'lucide-react';
+import { Menu, MessageCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/icons';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import Image from 'next/image';
+import placeholderImageData from '@/lib/placeholder-images.json';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -20,6 +21,24 @@ const navItems = [
 
 const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
 
+function LocalLogo() {
+  const logoData = placeholderImageData.placeholderImages.find(img => img.id === 'site-logo');
+  const logoUrl = logoData?.imageUrl || "https://live.staticflickr.com/65535/55276643036_18fb9e6e82.jpg";
+
+  return (
+    <div className="relative w-full h-full min-h-[40px]">
+      <Image
+        src={logoUrl}
+        alt="StakIt Hire Logo"
+        fill
+        priority
+        className="object-contain object-left"
+        sizes="(max-width: 768px) 160px, 256px"
+      />
+    </div>
+  );
+}
+
 export function AppHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -29,7 +48,7 @@ export function AppHeader() {
       <div className="container mx-auto flex h-20 md:h-24 items-center justify-between px-4 md:px-8">
         <div className="flex items-center min-w-[140px]">
           <Link href="/" className="relative block h-12 w-40 md:h-16 md:w-56 transition-transform hover:scale-105 active:scale-95">
-            <Icons.logo />
+            <LocalLogo />
           </Link>
         </div>
 
@@ -69,7 +88,7 @@ export function AppHeader() {
               <SheetHeader className="p-6 border-b">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="h-10 w-32 relative block">
-                    <Icons.logo />
+                    <LocalLogo />
                 </div>
               </SheetHeader>
               <div className="flex flex-col h-[calc(100vh-100px)] py-6 px-4">

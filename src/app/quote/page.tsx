@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { format, differenceInDays, addDays } from 'date-fns';
+import { format, differenceInDays, addDays, startOfDay } from 'date-fns';
 import { 
   Calendar as CalendarIcon, 
   Minus, 
@@ -33,13 +33,106 @@ import {
 
 const MESSENGER_URL = "https://m.me/stakithire";
 
+// Helper components moved outside the main page component to prevent re-creation loops
+function ItemRow({ 
+  item, 
+  qty, 
+  onUpdate, 
+  extraWeeks, 
+  mode, 
+  onToggleMode 
+}: { 
+  item: any; 
+  qty: number; 
+  onUpdate: (id: string, delta: number) => void;
+  extraWeeks: number;
+  mode?: 'hire' | 'purchase';
+  onToggleMode?: (id: string, mode: 'hire' | 'purchase') => void;
+}) {
+  const showModeToggle = onToggleMode && item.hirePrice && item.purchasePrice;
+  const currentPrice = mode === 'purchase' ? item.purchasePrice : (item.hirePrice || item.price);
+  const extraPrice = (mode === 'hire' || !mode) ? (item.followOnPrice || 0) : 0;
+
+  return (
+    <Card className={cn("border-none shadow-soft rounded-2xl transition-all duration-300", qty > 0 ? "ring-2 ring-primary/20 bg-primary/5" : "bg-white")}>
+      <CardContent className="p-5 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-4 flex-1 w-full">
+          <div className={cn("p-3 rounded-xl", qty > 0 ? "bg-primary text-white" : "bg-muted text-muted-foreground")}>
+            {item.contents ? <Package className="h-6 w-6" /> : <Box className="h-6 w-6" />}
+          </div>
+          <div className="space-y-1">
+            <h4 className="font-bold text-lg leading-tight">{item.name}</h4>
+            <p className="text-sm text-muted-foreground line-clamp-1">{item.description}</p>
+            <div className="flex items-center gap-3 pt-1">
+              <span className="text-sm font-bold text-primary">
+                ${currentPrice?.toFixed(2)} 
+                <span className="text-xs font-normal text-muted-foreground">
+                   {mode === 'purchase' ? ' (Purchase)' : ' (Week 1)'}
+                </span>
+              </span>
+              {extraPrice > 0 && extraWeeks > 0 && (
+                <span className="text-xs font-medium text-accent">
+                  + ${extraPrice.toFixed(2)} x {extraWeeks} Wks
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:items-end gap-3 w-full sm:w-auto">
+          {showModeToggle && (
+            <div className="flex bg-muted p-1 rounded-lg self-start sm:self-auto">
+              <button 
+                onClick={() => onToggleMode(item.id, 'hire')}
+                className={cn("px-3 py-1 text-xs font-bold rounded-md transition-all", mode === 'hire' ? "bg-white shadow-sm text-primary" : "text-muted-foreground")}
+              >
+                Hire
+              </button>
+              <button 
+                onClick={() => onToggleMode(item.id, 'purchase')}
+                className={cn("px-3 py-1 text-xs font-bold rounded-md transition-all", mode === 'purchase' ? "bg-white shadow-sm text-primary" : "text-muted-foreground")}
+              >
+                Buy
+              </button>
+            </div>
+          )}
+          
+          <div className="flex items-center gap-4 bg-muted/50 p-1 rounded-xl self-end">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="h-10 w-10 rounded-lg hover:bg-white hover:text-primary transition-colors"
+              onClick={() => onUpdate(item.id, -1)}
+            >
+              <Minus className="h-4 w-4" />
+            </Button>
+            <span className="w-8 text-center font-bold text-lg">{qty}</span>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="h-10 w-10 rounded-lg hover:bg-white hover:text-primary transition-colors"
+              onClick={() => onUpdate(item.id, 1)}
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function QuoteCalculatorPage() {
-  const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(() => addDays(new Date(), 7));
-  const [collectionDate, setCollectionDate] = useState<Date | undefined>(() => addDays(new Date(), 14));
+  const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(undefined);
+  const [collectionDate, setCollectionDate] = useState<Date | undefined>(undefined);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [options, setOptions] = useState<Record<string, 'hire' | 'purchase'>>({});
 
+  // Initialize dates and default options after mount to avoid hydration mismatches
   useEffect(() => {
+    setDeliveryDate(addDays(startOfDay(new Date()), 7));
+    setCollectionDate(addDays(startOfDay(new Date()), 14));
+    
     const initialOptions: Record<string, 'hire' | 'purchase'> = {};
     [...protectionAddOns, ...tvProtectionAddOns].forEach(item => {
       if (item.hirePrice && item.purchasePrice) {
@@ -64,16 +157,16 @@ export default function QuoteCalculatorPage() {
     return Math.max(0, hireWeeks - 1);
   }, [hireWeeks]);
 
-  const updateQuantity = (id: string, delta: number) => {
+  const updateQuantity = useCallback((id: string, delta: number) => {
     setQuantities(prev => ({
       ...prev,
       [id]: Math.max(0, (prev[id] || 0) + delta)
     }));
-  };
+  }, []);
 
-  const toggleOption = (id: string, mode: 'hire' | 'purchase') => {
+  const toggleOption = useCallback((id: string, mode: 'hire' | 'purchase') => {
     setOptions(prev => ({ ...prev, [id]: mode }));
-  };
+  }, []);
 
   const allItems = useMemo(() => [
     ...pricingBundles.map(b => ({ ...b, hirePrice: b.price })),
@@ -115,11 +208,11 @@ export default function QuoteCalculatorPage() {
     });
   }, [quantities, options, extraWeeks, allItems]);
 
-  const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
+  const subtotal = useMemo(() => cart.reduce((sum, item) => sum + item.total, 0), [cart]);
   const deliveryFee = subtotal > 0 ? 30 : 0;
   const grandTotal = subtotal + deliveryFee;
 
-  const generateMessengerLink = () => {
+  const generateMessengerLink = useCallback(() => {
     const itemsText = cart.map(item => `- ${item.qty}x ${item.name} (${item.mode === 'purchase' ? 'Purchase' : 'Hire'})`).join('%0A');
     const dateText = deliveryDate && collectionDate 
       ? `Delivery: ${format(deliveryDate, 'PPP')}%0ACollection: ${format(collectionDate, 'PPP')} (${hireWeeks} weeks total)`
@@ -128,9 +221,9 @@ export default function QuoteCalculatorPage() {
     const message = `Hi StakIt Hire! I've used your quote calculator and would like to check availability for:%0A%0A${itemsText}%0A%0A${dateText}%0A%0AEstimated Total: $${grandTotal.toFixed(2)}`;
     
     return `${MESSENGER_URL}?text=${message}`;
-  };
+  }, [cart, deliveryDate, collectionDate, hireWeeks, grandTotal]);
 
-  const generateEmailLink = () => {
+  const generateEmailLink = useCallback(() => {
     const itemsText = cart.map(item => `- ${item.qty}x ${item.name} (${item.mode === 'purchase' ? 'Purchase' : 'Hire'})`).join('%0A');
     const dateText = deliveryDate && collectionDate 
       ? `Delivery: ${format(deliveryDate, 'PPP')}%0ACollection: ${format(collectionDate, 'PPP')} (${hireWeeks} weeks total)`
@@ -140,7 +233,7 @@ export default function QuoteCalculatorPage() {
     const body = `Hi StakIt Hire!%0A%0AI've used your quote calculator and would like to check availability for:%0A%0A${itemsText}%0A%0A${dateText}%0A%0AEstimated Total: $${grandTotal.toFixed(2)}%0A%0AMy delivery address is:%0A[Please enter address here]`;
     
     return `mailto:stakithire@gmail.com?subject=${subject}&body=${body}`;
-  };
+  }, [cart, deliveryDate, collectionDate, hireWeeks, grandTotal]);
 
   return (
     <div className="container mx-auto max-w-6xl py-12 px-4 space-y-12">
@@ -174,7 +267,7 @@ export default function QuoteCalculatorPage() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={deliveryDate} onSelect={setDeliveryDate} initialFocus disabled={(date) => date < new Date()} />
+                    <Calendar mode="single" selected={deliveryDate} onSelect={setDeliveryDate} initialFocus disabled={(date) => date < startOfDay(new Date())} />
                   </PopoverContent>
                 </Popover>
               </div>
@@ -188,7 +281,7 @@ export default function QuoteCalculatorPage() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={collectionDate} onSelect={setCollectionDate} initialFocus disabled={(date) => deliveryDate ? date <= deliveryDate : date < new Date()} />
+                    <Calendar mode="single" selected={collectionDate} onSelect={setCollectionDate} initialFocus disabled={(date) => deliveryDate ? date <= deliveryDate : date < startOfDay(new Date())} />
                   </PopoverContent>
                 </Popover>
               </div>
@@ -357,93 +450,5 @@ export default function QuoteCalculatorPage() {
         </div>
       </div>
     </div>
-  );
-}
-
-function ItemRow({ 
-  item, 
-  qty, 
-  onUpdate, 
-  extraWeeks, 
-  mode, 
-  onToggleMode 
-}: { 
-  item: any; 
-  qty: number; 
-  onUpdate: (id: string, delta: number) => void;
-  extraWeeks: number;
-  mode?: 'hire' | 'purchase';
-  onToggleMode?: (id: string, mode: 'hire' | 'purchase') => void;
-}) {
-  const showModeToggle = onToggleMode && item.hirePrice && item.purchasePrice;
-  const currentPrice = mode === 'purchase' ? item.purchasePrice : (item.hirePrice || item.price);
-  const extraPrice = (mode === 'hire' || !mode) ? (item.followOnPrice || 0) : 0;
-
-  return (
-    <Card className={cn("border-none shadow-soft rounded-2xl transition-all duration-300", qty > 0 ? "ring-2 ring-primary/20 bg-primary/5" : "bg-white")}>
-      <CardContent className="p-5 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4 flex-1 w-full">
-          <div className={cn("p-3 rounded-xl", qty > 0 ? "bg-primary text-white" : "bg-muted text-muted-foreground")}>
-            {item.contents ? <Package className="h-6 w-6" /> : <Box className="h-6 w-6" />}
-          </div>
-          <div className="space-y-1">
-            <h4 className="font-bold text-lg leading-tight">{item.name}</h4>
-            <p className="text-sm text-muted-foreground line-clamp-1">{item.description}</p>
-            <div className="flex items-center gap-3 pt-1">
-              <span className="text-sm font-bold text-primary">
-                ${currentPrice?.toFixed(2)} 
-                <span className="text-xs font-normal text-muted-foreground">
-                   {mode === 'purchase' ? ' (Purchase)' : ' (Week 1)'}
-                </span>
-              </span>
-              {extraPrice > 0 && extraWeeks > 0 && (
-                <span className="text-xs font-medium text-accent">
-                  + ${extraPrice.toFixed(2)} x {extraWeeks} Wks
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:items-end gap-3 w-full sm:w-auto">
-          {showModeToggle && (
-            <div className="flex bg-muted p-1 rounded-lg self-start sm:self-auto">
-              <button 
-                onClick={() => onToggleMode(item.id, 'hire')}
-                className={cn("px-3 py-1 text-xs font-bold rounded-md transition-all", mode === 'hire' ? "bg-white shadow-sm text-primary" : "text-muted-foreground")}
-              >
-                Hire
-              </button>
-              <button 
-                onClick={() => onToggleMode(item.id, 'purchase')}
-                className={cn("px-3 py-1 text-xs font-bold rounded-md transition-all", mode === 'purchase' ? "bg-white shadow-sm text-primary" : "text-muted-foreground")}
-              >
-                Buy
-              </button>
-            </div>
-          )}
-          
-          <div className="flex items-center gap-4 bg-muted/50 p-1 rounded-xl self-end">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="h-10 w-10 rounded-lg hover:bg-white hover:text-primary transition-colors"
-              onClick={() => onUpdate(item.id, -1)}
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-            <span className="w-8 text-center font-bold text-lg">{qty}</span>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="h-10 w-10 rounded-lg hover:bg-white hover:text-primary transition-colors"
-              onClick={() => onUpdate(item.id, 1)}
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
   );
 }
