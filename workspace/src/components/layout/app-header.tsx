@@ -1,10 +1,9 @@
 'use client';
 
-import { AppHeader as MainHeader } from '@/components/layout/app-header';
-
 /**
- * Re-directing to the primary component to prevent collision issues.
+ * Redundant component removed to prevent circular dependency errors.
+ * The primary AppHeader is located in src/components/layout/app-header.tsx
  */
 export function AppHeader() {
-  return <MainHeader />;
+  return null;
 }

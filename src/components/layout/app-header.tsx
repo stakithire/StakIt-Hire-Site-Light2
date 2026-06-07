@@ -28,8 +28,8 @@ export function AppHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-soft">
       <div className="container mx-auto flex h-20 md:h-24 items-center justify-between px-4 md:px-8">
         {/* Logo Area */}
-        <div className="flex items-center">
-          <Link href="/" className="relative block h-14 w-40 md:h-20 md:w-64 transition-transform hover:scale-105 active:scale-95">
+        <div className="flex items-center min-w-[140px]">
+          <Link href="/" className="relative block h-12 w-40 md:h-16 md:w-56 transition-transform hover:scale-105 active:scale-95">
             <Icons.logo />
           </Link>
         </div>
@@ -71,9 +71,9 @@ export function AppHeader() {
             <SheetContent side="right" className="w-[300px] sm:w-[350px] p-0">
               <SheetHeader className="p-6 border-b">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <Link href="/" onClick={() => setOpen(false)} className="h-12 w-40 relative block">
+                <div className="h-10 w-32 relative block">
                     <Icons.logo />
-                </Link>
+                </div>
               </SheetHeader>
               <div className="flex flex-col h-[calc(100vh-100px)] py-6 px-4">
                 <nav className="flex flex-col gap-2">
