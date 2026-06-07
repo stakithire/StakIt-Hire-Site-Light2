@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import { AppHeader } from '@/components/layout/app-header';
+import { SiteHeader } from '@/components/layout/site-header';
 import { AppFooter } from '@/components/layout/app-footer';
 import { BackToTopButton } from '@/components/layout/back-to-top-button';
 import Script from 'next/script';
@@ -37,17 +37,20 @@ export default function RootLayout({
             gtag('config', 'G-Z8TN3DES2Z');
           `}
         </Script>
-        <div 
-          className="fixed inset-0 z-0 bg-center bg-no-repeat opacity-[0.15] pointer-events-none" 
-          style={{ backgroundImage: 'url(/watermark.png)', backgroundSize: '40%' }}
-        />
-        <div className="relative z-10 flex min-h-dvh flex-col">
-          <AppHeader />
-          <main className="flex-1">
+        
+        <div className="relative flex min-h-dvh flex-col z-10">
+          <SiteHeader />
+          <main className="flex-1 relative">
+            {/* Watermark contained within main to ensure background behavior */}
+            <div 
+              className="fixed inset-0 -z-10 bg-center bg-no-repeat opacity-[0.15] pointer-events-none" 
+              style={{ backgroundImage: 'url(/watermark.png)', backgroundSize: '40%' }}
+            />
             {children}
           </main>
           <AppFooter />
         </div>
+        
         <BackToTopButton />
         <Toaster />
       </body>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
@@ -33,7 +34,7 @@ import {
 
 const MESSENGER_URL = "https://m.me/stakithire";
 
-// Helper components moved outside the main page component to prevent re-creation loops
+// Helper components moved outside the main page component to prevent re-creation loops and stack errors
 function ItemRow({ 
   item, 
   qty, 
