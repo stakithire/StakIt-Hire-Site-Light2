@@ -1,9 +1,8 @@
-
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, MessageCircle, Calculator } from 'lucide-react';
+import { Menu, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -30,7 +29,7 @@ export function AppHeader() {
       <div className="container mx-auto flex h-20 md:h-24 items-center justify-between px-4 md:px-8">
         {/* Logo Area */}
         <div className="flex items-center">
-          <Link href="/" className="relative block h-16 w-48 md:h-20 md:w-64 transition-transform hover:scale-105 active:scale-95">
+          <Link href="/" className="relative block h-14 w-40 md:h-20 md:w-64 transition-transform hover:scale-105 active:scale-95">
             <Icons.logo />
           </Link>
         </div>
@@ -69,10 +68,10 @@ export function AppHeader() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[320px] p-0">
+            <SheetContent side="right" className="w-[300px] sm:w-[350px] p-0">
               <SheetHeader className="p-6 border-b">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <Link href="/" onClick={() => setOpen(false)} className="h-16 w-48 relative block">
+                <Link href="/" onClick={() => setOpen(false)} className="h-12 w-40 relative block">
                     <Icons.logo />
                 </Link>
               </SheetHeader>
@@ -84,7 +83,7 @@ export function AppHeader() {
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "text-xl font-bold tracking-tight p-4 rounded-xl transition-all",
+                        "text-lg font-bold tracking-tight p-4 rounded-xl transition-all",
                         pathname === item.href || (item.href === '/blog' && pathname.startsWith('/blog'))
                           ? "bg-primary/10 text-primary" 
                           : "text-muted-foreground hover:bg-muted"
@@ -95,7 +94,7 @@ export function AppHeader() {
                   ))}
                 </nav>
                 <div className="mt-auto pt-8">
-                  <Button asChild className="w-full bg-[#6930F7] h-16 text-lg font-bold shadow-premium" onClick={() => setOpen(false)}>
+                  <Button asChild className="w-full bg-[#6930F7] h-14 text-lg font-bold shadow-premium" onClick={() => setOpen(false)}>
                     <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-2 h-6 w-6" />
                       Book via Facebook

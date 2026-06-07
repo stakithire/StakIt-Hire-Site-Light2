@@ -7,14 +7,14 @@ export const Icons = {
     const logoUrl = logoData?.imageUrl || "https://live.staticflickr.com/65535/55276643036_18fb9e6e82.jpg";
 
     return (
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-full h-full">
         <Image
           src={logoUrl}
           alt="StakIt Hire Logo"
           fill
-          sizes="(max-width: 768px) 300px, 300px"
           priority
-          className="object-contain"
+          className="object-contain object-left lg:object-center"
+          sizes="(max-width: 768px) 160px, 256px"
           {...props}
         />
       </div>
