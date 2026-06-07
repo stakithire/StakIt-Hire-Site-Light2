@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -27,14 +28,12 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-soft">
       <div className="container mx-auto flex h-20 md:h-24 items-center justify-between px-4 md:px-8">
-        {/* Logo Area */}
         <div className="flex items-center min-w-[140px]">
           <Link href="/" className="relative block h-12 w-40 md:h-16 md:w-56 transition-transform hover:scale-105 active:scale-95">
             <Icons.logo />
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-10">
           <nav className="flex items-center gap-8">
             {navItems.map((item) => (
@@ -59,7 +58,6 @@ export function AppHeader() {
           </Button>
         </div>
 
-        {/* Mobile Nav Trigger */}
         <div className="lg:hidden flex items-center gap-4">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>

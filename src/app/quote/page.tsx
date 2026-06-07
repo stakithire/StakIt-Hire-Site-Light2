@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
@@ -9,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { format, differenceInDays, addDays } from 'date-fns';
 import { 
-  CalendarIcon, 
+  Calendar as CalendarIcon, 
   Minus, 
   Plus, 
   MessageCircle, 
@@ -31,7 +32,6 @@ import {
   pricingBundles 
 } from '@/lib/data';
 
-// Using m.me for direct messenger linking with pre-filled text support
 const MESSENGER_URL = "https://m.me/stakithire";
 
 export default function QuoteCalculatorPage() {
