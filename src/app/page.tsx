@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import {
   Card,
@@ -11,7 +12,7 @@ import placeholderImageData from '@/lib/placeholder-images.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { PackageSearch, Truck, Leaf, Sparkles, ArrowRight, MapPin, Rocket, Smile, Home, MessageCircle, Mail } from 'lucide-react';
+import { PackageSearch, Truck, Leaf, Sparkles, ArrowRight, MapPin, Rocket, Smile, Home, MessageCircle, Mail, Box } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'StakIt Hire | Boxes That Don\'t Quit',
@@ -34,6 +35,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-12">
+        {/* Hero Section */}
         <section className="relative text-center py-24 md:py-40 rounded-3xl shadow-premium overflow-hidden mx-4 md:mx-0">
             {heroImage && (
                 <Image
@@ -76,6 +78,7 @@ export default function HomePage() {
             </div>
         </section>
 
+        {/* Suburbs Section */}
         <section className="container mx-auto px-4">
             <Card className="bg-primary/5 border-primary/20 shadow-soft rounded-[2.5rem] overflow-hidden">
                 <CardContent className="p-10">
@@ -84,10 +87,10 @@ export default function HomePage() {
                             <MapPin className="h-10 w-10 text-primary" />
                         </div>
                         <div>
-                            <h2 className="text-3xl font-headline font-bold text-foreground">Currently Servicing the Greater Penrith Area</h2>
+                            <h2 className="text-3xl font-headline font-bold text-foreground">Proudly Serving the Penrith Area</h2>
                             <p className="text-muted-foreground text-lg mt-2 max-w-2xl">
-                                Our standard delivery zone covers the greater Penrith region. If you are outside this area, please message us for a custom quote. 
-                                <span className="block mt-2 font-bold text-primary">Note: Delivery costs may vary for custom quotes.</span>
+                                Local business. Local delivery. Local support. No call centre. No franchise. Just practical moving solutions delivered by locals.
+                                <span className="block mt-4 font-bold text-primary">Note: If outside the area please message us for a custom delivery quote.</span>
                             </p>
                         </div>
                     </div>
@@ -109,9 +112,93 @@ export default function HomePage() {
         </section>
 
       <main className="container mx-auto space-y-24 px-4 pb-24">
+        {/* How It Works Section */}
+        <section>
+          <h2 className="text-4xl font-headline font-bold text-center mb-16">
+            How It Works
+          </h2>
+          <div className="grid md:grid-cols-3 gap-16 text-center">
+              <div className="flex flex-col items-center space-y-6">
+                  <div className="bg-primary/10 p-8 rounded-3xl shadow-soft">
+                      <PackageSearch className="h-14 w-14 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-headline font-bold">1. Choose Your Move Setup</h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed px-4">Pick a kit or customise what you need — view our pricing page for details.</p>
+              </div>
+              <div className="flex flex-col items-center space-y-6">
+                  <div className="bg-primary/10 p-8 rounded-3xl shadow-soft">
+                      <MessageCircle className="h-14 w-14 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-headline font-bold">2. Message or Email Us</h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed px-4">Send us your dates and address via Facebook or Email. We&apos;ll confirm your booking promptly.</p>
+              </div>
+              <div className="flex flex-col items-center space-y-6">
+                  <div className="bg-primary/10 p-8 rounded-3xl shadow-soft">
+                      <Truck className="h-14 w-14 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-headline font-bold">3. We Deliver & Collect</h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed px-4">We bring everything to your door — and pick it up when you&apos;re done.</p>
+              </div>
+          </div>
+        </section>
+
+        {/* Why Choose Section */}
+        <section className="py-24 bg-primary/5 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 rounded-[4rem]">
+          <div className="container mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-headline font-bold mb-16">
+                Why Choose StakIt Hire?
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+                  <div className="flex flex-col items-center space-y-4">
+                      <div className="bg-white p-6 rounded-full shadow-premium">
+                         <Rocket className="h-12 w-12 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-headline font-bold pt-2">Save Hours Packing</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Large 100L crates pack faster than cardboard boxes.</p>
+                  </div>
+                  <div className="flex flex-col items-center space-y-4">
+                      <div className="bg-white p-6 rounded-full shadow-premium">
+                          <Smile className="h-12 w-12 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-headline font-bold pt-2">No Box Hunting</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Delivered to your door when you need them.</p>
+                  </div>
+                   <div className="flex flex-col items-center space-y-4">
+                      <div className="bg-white p-6 rounded-full shadow-premium">
+                          <Truck className="h-12 w-12 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-headline font-bold pt-2">No Cleanup</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">We collect everything when you&apos;re finished.</p>
+                  </div>
+                  <div className="flex flex-col items-center space-y-4">
+                        <div className="bg-white p-6 rounded-full shadow-premium">
+                            <Box className="h-12 w-12 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-headline font-bold pt-2">Everything In One Place</h3>
+                        <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Crates, bubble wrap, blankets, mattress covers and trolleys.</p>
+                    </div>
+                   <div className="flex flex-col items-center space-y-4">
+                      <div className="bg-white p-6 rounded-full shadow-premium">
+                          <Leaf className="h-12 w-12 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-headline font-bold pt-2">Smarter & Sustainable</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Reusable crates that are stronger, cleaner, and better for the environment.</p>
+                  </div>
+                  <div className="flex flex-col items-center space-y-4">
+                      <div className="bg-white p-6 rounded-full shadow-premium">
+                          <Sparkles className="h-12 w-12 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-headline font-bold pt-2">Professionally Cleaned</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Every crate is thoroughly cleaned and sanitized, ready for your move.</p>
+                  </div>
+              </div>
+          </div>
+        </section>
+
+        {/* Everything You Need Section (Carousel) */}
         <section>
           <h2 className="text-4xl font-headline font-bold text-center mb-12">
-            Our Most Popular Services
+            Everything You Need. One Delivery.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {carouselItems.map((item) => (
@@ -143,87 +230,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section>
-          <h2 className="text-4xl font-headline font-bold text-center mb-16">
-            How It Works
-          </h2>
-          <div className="grid md:grid-cols-3 gap-16 text-center">
-              <div className="flex flex-col items-center space-y-6">
-                  <div className="bg-primary/10 p-8 rounded-3xl shadow-soft">
-                      <PackageSearch className="h-14 w-14 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-headline font-bold">1. Choose Your Move Setup</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed px-4">Pick a kit or customise what you need — view our pricing page for details.</p>
-              </div>
-              <div className="flex flex-col items-center space-y-6">
-                  <div className="bg-primary/10 p-8 rounded-3xl shadow-soft">
-                      <MessageCircle className="h-14 w-14 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-headline font-bold">2. Message Us on Facebook</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed px-4">Send us your dates and address. We&apos;ll confirm your booking in minutes.</p>
-              </div>
-              <div className="flex flex-col items-center space-y-6">
-                  <div className="bg-primary/10 p-8 rounded-3xl shadow-soft">
-                      <Truck className="h-14 w-14 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-headline font-bold">3. We Deliver & Collect</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed px-4">We bring everything to your door — and pick it up when you&apos;re done.</p>
-              </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-primary/5 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 rounded-[4rem]">
-          <div className="container mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-headline font-bold mb-16">
-                Why Choose StakIt Hire?
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
-                  <div className="flex flex-col items-center space-y-4">
-                      <div className="bg-white p-6 rounded-full shadow-premium">
-                         <Rocket className="h-12 w-12 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-headline font-bold pt-2">Move Faster</h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Pack in less time with stackable, ready-to-use crates — no tape, no building boxes.</p>
-                  </div>
-                  <div className="flex flex-col items-center space-y-4">
-                      <div className="bg-white p-6 rounded-full shadow-premium">
-                          <Smile className="h-12 w-12 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-headline font-bold pt-2">Less Stress, Less Mess</h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">No cardboard clutter, no last-minute runs to the shops — just a clean, organised move.</p>
-                  </div>
-                   <div className="flex flex-col items-center space-y-4">
-                      <div className="bg-white p-6 rounded-full shadow-premium">
-                          <Truck className="h-12 w-12 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-headline font-bold pt-2">Delivered & Done</h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">We drop everything off and collect it when you&apos;re finished. Simple.</p>
-                  </div>
-                   <div className="flex flex-col items-center space-y-4">
-                      <div className="bg-white p-6 rounded-full shadow-premium">
-                          <Leaf className="h-12 w-12 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-headline font-bold pt-2">Smarter & Sustainable</h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Reusable crates that are stronger, cleaner, and better for the environment.</p>
-                  </div>
-                   <div className="flex flex-col items-center space-y-4">
-                      <div className="bg-white p-6 rounded-full shadow-premium">
-                          <Sparkles className="h-12 w-12 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-headline font-bold pt-2">Professionally Cleaned</h3>
-                      <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">Every crate is thoroughly cleaned and sanitized, ready for your move.</p>
-                  </div>
-                  <div className="flex flex-col items-center space-y-4">
-                        <div className="bg-white p-6 rounded-full shadow-premium">
-                            <Home className="h-12 w-12 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-headline font-bold pt-2">Designed for Real Moves</h3>
-                        <p className="text-muted-foreground text-lg leading-relaxed max-w-[300px]">From small apartments to full family homes — our kits are built to match your move size.</p>
-                    </div>
-              </div>
-          </div>
-        </section>
-
+        {/* Final CTA Section */}
         <section className="py-24">
             <div className="container mx-auto text-center">
                 <h2 className="text-5xl font-headline font-bold mb-6">Ready for a smarter move?</h2>
