@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import { ArrowRight, Calendar, Tag } from 'lucide-react';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
   title: 'The StakIt Journal | Moving Tips & Insights',
@@ -73,7 +74,7 @@ export default function BlogPage() {
         </CardHeader>
         <CardContent className="pt-6">
           <Button asChild size="lg" className="rounded-2xl h-14 px-10 text-lg font-bold shadow-soft">
-            <a href="https://www.facebook.com/stakithire" target="_blank" rel="noopener noreferrer">
+            <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
               Follow Our Facebook Page
             </a>
           </Button>

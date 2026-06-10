@@ -5,8 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Mail, Clock, MessageCircle, MapPin, Send } from 'lucide-react';
-
-const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export default function ContactPage() {
   return (
@@ -35,8 +34,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                     <p className="font-bold text-xl mb-1">Email Us</p>
-                    <a href="mailto:stakithire@gmail.com" className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium">
-                        stakithire@gmail.com
+                    <a href={`mailto:${BUSINESS_CONFIG.email}`} className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium">
+                        {BUSINESS_CONFIG.email}
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">Checked daily for quotes and inquiries.</p>
                 </div>
@@ -47,7 +46,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                     <p className="font-bold text-xl mb-1">Our Service Area</p>
-                    <p className="text-lg text-muted-foreground font-medium">Greater Penrith Area, NSW</p>
+                    <p className="text-lg text-muted-foreground font-medium">{BUSINESS_CONFIG.serviceArea}</p>
                     <p className="text-sm text-muted-foreground mt-1">Delivering to 20+ local suburbs.</p>
                 </div>
             </div>
@@ -94,13 +93,13 @@ export default function ContactPage() {
             </ul>
             <div className="flex flex-col gap-4 pt-4">
                 <Button asChild size="lg" variant="secondary" className="w-full h-16 text-xl font-bold shadow-soft hover:scale-[1.02] transition-transform rounded-2xl">
-                    <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                    <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                         <MessageCircle className="mr-3 h-7 w-7" />
                         Chat via Facebook
                     </a>
                 </Button>
                 <Button asChild size="lg" className="w-full h-16 bg-accent text-accent-foreground hover:bg-accent/90 border-none text-xl font-bold shadow-soft hover:scale-[1.02] transition-transform rounded-2xl">
-                    <a href="mailto:stakithire@gmail.com">
+                    <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                         <Mail className="mr-3 h-7 w-7" />
                         Email Our Team
                     </a>

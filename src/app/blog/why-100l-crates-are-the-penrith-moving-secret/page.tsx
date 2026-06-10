@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, MessageCircle, Mail } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 const SLUG = 'why-100l-crates-are-the-penrith-moving-secret';
 
@@ -109,13 +110,13 @@ export default function BlogPostPage() {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6 pt-4">
           <Button asChild size="lg" className="h-20 px-12 text-2xl font-bold bg-[#6930F7] rounded-2xl shadow-premium transition-transform hover:scale-105">
-            <a href="https://www.facebook.com/stakithire" target="_blank" rel="noopener noreferrer">
+            <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-3 h-8 w-8" />
               Book via Facebook
             </a>
           </Button>
           <Button asChild variant="outline" size="lg" className="h-20 px-12 text-2xl font-bold rounded-2xl border-2 shadow-soft transition-transform hover:scale-105">
-            <a href="mailto:stakithire@gmail.com">
+            <a href={`mailto:${BUSINESS_CONFIG.email}`}>
               <Mail className="mr-3 h-8 w-8" />
               Email Our Team
             </a>

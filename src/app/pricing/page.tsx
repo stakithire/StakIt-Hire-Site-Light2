@@ -11,13 +11,12 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Check, Truck, MessageCircle, Mail, Ruler, ShieldCheck, Box } from 'lucide-react';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
   title: 'Our Pricing | StakIt Hire',
   description: 'View our rental prices for moving boxes and equipment in the Greater Penrith Area.',
 };
-
-const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
 
 export default function PricingPage() {
   const standardMattressProtectors = protectionAddOns.filter(
@@ -179,7 +178,7 @@ export default function PricingPage() {
           </CardHeader>
           <CardContent>
               <p className="text-muted-foreground">
-                  A single, flat fee of <span className="font-bold text-foreground">$30</span> applies to all orders within the Greater Penrith Area. This fee covers both the delivery of your equipment at the start of your rental and the collection from your specified address at the end. No surprises.
+                  A single, flat fee of <span className="font-bold text-foreground">$30</span> applies to all orders within the {BUSINESS_CONFIG.serviceArea}. This fee covers both the delivery of your equipment at the start of your rental and the collection from your specified address at the end. No surprises.
               </p>
           </CardContent>
       </Card>
@@ -190,14 +189,14 @@ export default function PricingPage() {
               <p className="text-muted-foreground mt-2 mb-6">Get in touch with your preferred items and dates.</p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button asChild size="lg" className="h-14 px-8 bg-[#6930F7] font-bold">
-                      <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                      <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                           <MessageCircle className="mr-2 h-5 w-5" />
                           Message via Facebook
                           <ArrowRight className="ml-2 h-4 w-4" />
                       </a>
                   </Button>
                   <Button asChild size="lg" className="h-14 px-8 bg-accent text-accent-foreground hover:bg-accent/90 border-none font-bold">
-                      <a href="mailto:stakithire@gmail.com">
+                      <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                           <Mail className="mr-2 h-5 w-5" />
                           Email Our Team
                           <ArrowRight className="ml-2 h-4 w-4" />

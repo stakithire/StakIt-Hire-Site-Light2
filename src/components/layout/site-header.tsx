@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/co
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 import { SiteLogo } from './site-logo';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -17,8 +18,6 @@ const navItems = [
   { href: '/blog', label: 'The StakIt Journal' },
   { href: '/faq', label: 'FAQ' },
 ];
-
-const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -62,7 +61,7 @@ export function SiteHeader() {
           </nav>
 
           <Button asChild className="bg-[#6930F7] hover:bg-[#6930F7]/90 px-8 h-12 text-md font-bold shadow-soft hover:shadow-premium transition-all">
-            <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+            <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-5 w-5" />
               Chat on FB
             </a>
@@ -104,7 +103,7 @@ export function SiteHeader() {
                 </nav>
                 <div className="mt-auto pt-8">
                   <Button asChild className="w-full bg-[#6930F7] h-14 text-lg font-bold shadow-premium" onClick={() => setOpen(false)}>
-                    <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                    <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-2 h-6 w-6" />
                       Book via Facebook
                     </a>

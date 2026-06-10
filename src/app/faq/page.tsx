@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import {
   Accordion,
@@ -10,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Mail, MessageCircle, Info } from 'lucide-react';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
   title: 'FAQ | StakIt Hire',
@@ -20,11 +20,11 @@ const faqSections = {
     "Booking & Ordering": [
         {
             question: "How do I book my move?",
-            answer: "Booking is fast and manual! Simply message us on Facebook Messenger or send an email to stakithire@gmail.com. Let us know your preferred dates, the items or kit you need, and your delivery address. We will provide a quote and confirm your booking promptly."
+            answer: `Booking is fast and manual! Simply message us on Facebook Messenger or send an email to ${BUSINESS_CONFIG.email}. Let us know your preferred dates, the items or kit you need, and your delivery address. We will provide a quote and confirm your booking promptly.`
         },
         {
             question: "Can I book via email instead of Facebook?",
-            answer: "Yes, absolutely. We offer full support via email for quotes and bookings. Just reach out to stakithire@gmail.com and our team will assist you with everything you need."
+            answer: `Yes, absolutely. We offer full support via email for quotes and bookings. Just reach out to ${BUSINESS_CONFIG.email} and our team will assist you with everything you need.`
         },
         {
             question: "How far in advance should I book?",
@@ -103,7 +103,7 @@ export default function FAQPage() {
           Got Questions?
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Everything you need to know about packing, stacking, and moving with the Greater Penrith Area's premium crate hire service.
+          Everything you need to know about packing, stacking, and moving with the {BUSINESS_CONFIG.serviceArea}'s premium crate hire service.
         </p>
       </header>
 
@@ -143,14 +143,14 @@ export default function FAQPage() {
           </CardHeader>
           <CardContent className="pt-10 flex flex-col sm:flex-row justify-center gap-6">
               <Button asChild size="lg" variant="secondary" className="h-16 px-10 text-xl font-bold shadow-soft transition-transform hover:scale-105 rounded-2xl">
-                  <a href="https://www.facebook.com/stakithire" target="_blank" rel="noopener noreferrer">
+                  <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-3 h-7 w-7" />
                       Chat on Facebook
                       <ArrowRight className="ml-3 h-6 w-6" />
                   </a>
               </Button>
               <Button asChild size="lg" className="h-16 px-10 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
-                  <a href="mailto:stakithire@gmail.com">
+                  <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                       <Mail className="mr-3 h-7 w-7" />
                       Email Our Team
                   </a>

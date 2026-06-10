@@ -1,17 +1,15 @@
-
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, Users, Eye, MessageCircle, Mail } from 'lucide-react';
 import Image from 'next/image';
 import placeholderImageData from '@/lib/placeholder-images.json';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
   title: 'Who Is StakIt Hire? | StakIt Hire',
   description: 'Learn about the mission and story behind StakIt Hire.',
 };
-
-const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
 
 export default function AboutPage() {
     const aboutImage = placeholderImageData.placeholderImages.find(img => img.id === 'about-hero');
@@ -23,7 +21,7 @@ export default function AboutPage() {
           Who Is StakIt Hire?
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground font-sans italic max-w-3xl mx-auto leading-relaxed">
-          "Boxes that don't quit — Pack. Stack. Move."
+          "{BUSINESS_CONFIG.tagline}"
         </p>
       </header>
 
@@ -41,7 +39,7 @@ export default function AboutPage() {
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                  <div className="absolute bottom-0 left-0 p-8 md:p-12 lg:p-16 w-full">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-white mb-2">Our Story</h2>
-                    <p className="text-white/80 text-lg md:text-xl font-medium tracking-wide">Greater Penrith Area's Premium Moving Solution</p>
+                    <p className="text-white/80 text-lg md:text-xl font-medium tracking-wide">{BUSINESS_CONFIG.serviceArea}'s Premium Moving Solution</p>
                  </div>
             </div>
             <CardContent className="p-8 md:p-12 lg:p-16 text-muted-foreground space-y-10 text-lg md:text-xl leading-relaxed">
@@ -72,7 +70,7 @@ export default function AboutPage() {
                     That’s it. Zero waste to dispose of, zero rolls of tape to struggle with, and zero "oh no, the box just tore" moments. It’s a cleaner, faster, and more sustainable way to get where you’re going.
                   </p>
                   <p>
-                    As a local business serving the Greater Penrith Area, we take pride in helping our neighbors transition into their new homes with one less thing to worry about. We aren't just a hire service; we are your partners in making your next move your best move.
+                    As a local business serving the {BUSINESS_CONFIG.serviceArea}, we take pride in helping our neighbors transition into their new homes with one less thing to worry about. We aren't just a hire service; we are your partners in making your next move your best move.
                   </p>
                 </div>
             </CardContent>
@@ -117,7 +115,7 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="text-center px-8 pb-10">
             <p className="text-muted-foreground leading-relaxed">
-              We are a local business dedicated to serving the Greater Penrith Area. We promise transparent pricing, reliable service, and a friendly face every step of the way.
+              We are a local business dedicated to serving the {BUSINESS_CONFIG.serviceArea}. We promise transparent pricing, reliable service, and a friendly face every step of the way.
             </p>
           </CardContent>
         </Card>
@@ -132,14 +130,14 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="pt-10 flex flex-col sm:flex-row justify-center gap-6">
               <Button asChild size="lg" variant="secondary" className="h-16 px-12 text-xl font-bold shadow-soft transition-transform hover:scale-105 rounded-2xl">
-                  <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                  <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-3 h-7 w-7" />
                       Book via Facebook
                       <ArrowRight className="ml-4 h-7 w-7" />
                   </a>
               </Button>
               <Button asChild size="lg" className="h-16 px-12 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
-                  <a href="mailto:stakithire@gmail.com">
+                  <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                       <Mail className="mr-3 h-7 w-7" />
                       Email Our Team
                   </a>

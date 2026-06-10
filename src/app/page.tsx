@@ -13,13 +13,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PackageSearch, Truck, Leaf, Sparkles, ArrowRight, MapPin, Rocket, Smile, Home, MessageCircle, Mail, Box } from 'lucide-react';
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
   title: 'StakIt Hire | Boxes That Don\'t Quit',
   description: 'Eco-friendly, durable, and stackable moving crates delivered to your door. Greater Penrith Area.',
 };
-
-const FACEBOOK_PAGE_URL = "https://www.facebook.com/stakithire";
 
 const serviceSuburbs = [
   "Penrith", "South Penrith", "Glenmore Park", "Jordan Springs", 
@@ -52,7 +51,7 @@ export default function HomePage() {
                     Welcome to StakIt Hire
                 </h1>
                 <h2 className="text-2xl md:text-3xl font-sans font-bold text-white/90 tracking-wide uppercase mb-8">
-                    Boxes that don&apos;t quit — Pack. Stack. Move.
+                    {BUSINESS_CONFIG.tagline}
                 </h2>
                 <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
                     Everything you need to move house — delivered to your door, organised, and taken away when you&apos;re done.
@@ -63,13 +62,13 @@ export default function HomePage() {
                         <Link href="/pricing">View Prices</Link>
                     </Button>
                     <Button asChild variant="secondary" size="lg" className="h-16 px-8 text-xl font-bold shadow-xl transition-transform hover:scale-105">
-                        <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                        <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                            <MessageCircle className="mr-3 h-6 w-6" />
                            Facebook
                         </a>
                     </Button>
                     <Button asChild size="lg" className="h-16 px-8 text-xl font-bold bg-accent text-accent-foreground hover:bg-accent/90 shadow-xl transition-transform hover:scale-105 border-none">
-                        <a href="mailto:stakithire@gmail.com">
+                        <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                            <Mail className="mr-3 h-6 w-6" />
                            Email Us
                         </a>
@@ -237,13 +236,13 @@ export default function HomePage() {
                 <p className="text-muted-foreground text-xl mb-12 max-w-2xl mx-auto">Check out our packages and get in touch to book your delivery dates.</p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                     <Button asChild size="lg" className="h-20 px-10 text-2xl font-bold shadow-premium hover:shadow-premium/80 transition-all bg-[#6930F7] rounded-2xl">
-                        <a href={FACEBOOK_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                        <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                             Book via Facebook
                             <ArrowRight className="ml-4 h-8 w-8" />
                         </a>
                     </Button>
                     <Button asChild size="lg" className="h-20 px-10 text-2xl font-bold shadow-premium hover:shadow-premium/80 transition-all bg-accent text-accent-foreground border-none rounded-2xl">
-                        <a href="mailto:stakithire@gmail.com">
+                        <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                             <Mail className="mr-4 h-8 w-8" />
                             Email Our Team
                         </a>

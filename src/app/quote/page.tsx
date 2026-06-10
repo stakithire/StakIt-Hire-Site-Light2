@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
@@ -31,8 +30,7 @@ import {
   tvProtectionAddOns,
   pricingBundles 
 } from '@/lib/data';
-
-const MESSENGER_URL = "https://m.me/stakithire";
+import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 // Helper components moved outside the main page component to prevent re-creation loops and stack errors
 function ItemRow({ 
@@ -221,7 +219,7 @@ export default function QuoteCalculatorPage() {
     
     const message = `Hi StakIt Hire! I've used your quote calculator and would like to check availability for:%0A%0A${itemsText}%0A%0A${dateText}%0A%0AEstimated Total: $${grandTotal.toFixed(2)}`;
     
-    return `${MESSENGER_URL}?text=${message}`;
+    return `${BUSINESS_CONFIG.messengerUrl}?text=${message}`;
   }, [cart, deliveryDate, collectionDate, hireWeeks, grandTotal]);
 
   const generateEmailLink = useCallback(() => {
@@ -233,7 +231,7 @@ export default function QuoteCalculatorPage() {
     const subject = encodeURIComponent("Quote Request from StakIt Hire Calculator");
     const body = `Hi StakIt Hire!%0A%0AI've used your quote calculator and would like to check availability for:%0A%0A${itemsText}%0A%0A${dateText}%0A%0AEstimated Total: $${grandTotal.toFixed(2)}%0A%0AMy delivery address is:%0A[Please enter address here]`;
     
-    return `mailto:stakithire@gmail.com?subject=${subject}&body=${body}`;
+    return `mailto:${BUSINESS_CONFIG.email}?subject=${subject}&body=${body}`;
   }, [cart, deliveryDate, collectionDate, hireWeeks, grandTotal]);
 
   return (
