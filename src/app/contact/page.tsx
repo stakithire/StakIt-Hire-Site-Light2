@@ -1,10 +1,9 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Mail, Clock, MessageCircle, MapPin, Send } from 'lucide-react';
+import { ArrowRight, Mail, Clock, MessageCircle, MapPin, Send, Phone } from 'lucide-react';
 import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export default function ContactPage() {
@@ -15,7 +14,7 @@ export default function ContactPage() {
           Get In Touch
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Ready to pack, stack, and move? Reach out via Facebook or Email for a fast quote and booking.
+          Ready to pack, stack, and move? Reach out via Phone, Facebook or Email for a fast quote and booking.
         </p>
       </header>
 
@@ -28,6 +27,18 @@ export default function ContactPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-8 pt-4">
+            <div className="flex items-start gap-6 group">
+                <div className="bg-primary/10 p-4 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Phone className="h-7 w-7 text-primary group-hover:text-white" />
+                </div>
+                <div>
+                    <p className="font-bold text-xl mb-1">Call Us</p>
+                    <a href={`tel:${BUSINESS_CONFIG.phone.replace(/\s/g, '')}`} className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium">
+                        {BUSINESS_CONFIG.phone}
+                    </a>
+                    <p className="text-sm text-muted-foreground mt-1">Available for quick questions and bookings.</p>
+                </div>
+            </div>
             <div className="flex items-start gap-6 group">
                 <div className="bg-primary/10 p-4 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Mail className="h-7 w-7 text-primary group-hover:text-white" />
@@ -56,8 +67,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                     <p className="font-bold text-xl mb-1">Business Hours</p>
-                    <p className="text-lg text-muted-foreground font-medium">7 Days a Week</p>
-                    <p className="text-sm text-muted-foreground mt-1">8:00 AM — 6:00 PM</p>
+                    <p className="text-lg text-muted-foreground font-medium">{BUSINESS_CONFIG.hours}</p>
                 </div>
             </div>
           </CardContent>
@@ -99,6 +109,12 @@ export default function ContactPage() {
                     </a>
                 </Button>
                 <Button asChild size="lg" className="w-full h-16 bg-accent text-accent-foreground hover:bg-accent/90 border-none text-xl font-bold shadow-soft hover:scale-[1.02] transition-transform rounded-2xl">
+                    <a href={`tel:${BUSINESS_CONFIG.phone.replace(/\s/g, '')}`}>
+                        <Phone className="mr-3 h-7 w-7" />
+                        Call Our Team
+                    </a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="w-full h-16 text-white border-white/20 hover:bg-white/10 text-xl font-bold shadow-soft hover:scale-[1.02] transition-transform rounded-2xl">
                     <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                         <Mail className="mr-3 h-7 w-7" />
                         Email Our Team

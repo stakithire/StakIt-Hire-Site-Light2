@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Mail, MapPin } from 'lucide-react';
+import { Facebook, Mail, MapPin, Phone } from 'lucide-react';
 import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export function AppFooter() {
@@ -32,6 +32,13 @@ export function AppFooter() {
                 aria-label="Follow us on Facebook"
               >
                 <Facebook className="h-6 w-6" />
+              </a>
+              <a 
+                href={`tel:${BUSINESS_CONFIG.phone.replace(/\s/g, '')}`}
+                className="bg-primary/10 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                aria-label="Call us"
+              >
+                <Phone className="h-6 w-6" />
               </a>
               <a 
                 href={`mailto:${BUSINESS_CONFIG.email}`}

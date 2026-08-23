@@ -8,7 +8,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Mail, MessageCircle, Info } from 'lucide-react';
+import { ArrowRight, Mail, MessageCircle, Info, Phone } from 'lucide-react';
 import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
@@ -20,11 +20,11 @@ const faqSections = {
     "Booking & Ordering": [
         {
             question: "How do I book my move?",
-            answer: `Booking is fast and manual! Simply message us on Facebook Messenger or send an email to ${BUSINESS_CONFIG.email}. Let us know your preferred dates, the items or kit you need, and your delivery address. We will provide a quote and confirm your booking promptly.`
+            answer: `Booking is fast and manual! Simply message us on Facebook Messenger, call us at ${BUSINESS_CONFIG.phone}, or send an email to ${BUSINESS_CONFIG.email}. Let us know your preferred dates, the items or kit you need, and your delivery address. We will provide a quote and confirm your booking promptly.`
         },
         {
-            question: "Can I book via email instead of Facebook?",
-            answer: `Yes, absolutely. We offer full support via email for quotes and bookings. Just reach out to ${BUSINESS_CONFIG.email} and our team will assist you with everything you need.`
+            question: "Can I book via email or phone instead of Facebook?",
+            answer: `Yes, absolutely. We offer full support via phone and email for quotes and bookings. Just reach out and our team will assist you with everything you need.`
         },
         {
             question: "How far in advance should I book?",
@@ -38,7 +38,7 @@ const faqSections = {
     "Pricing & Payment": [
         {
             question: "When and how do I pay?",
-            answer: "Once your booking details are finalized, we will provide a secure payment link or our bank details for a direct transfer via Facebook or Email. Please note that if paying via bank transfer, funds must be cleared in our account before your order can be confirmed and your delivery scheduled."
+            answer: "Once your booking details are finalized, we will provide a secure payment link or our bank details for a direct transfer. Please note that if paying via bank transfer, funds must be cleared in our account before your order can be confirmed and your delivery scheduled."
         },
         {
             question: "What payment methods do you accept?",
@@ -141,15 +141,20 @@ export default function FAQPage() {
                 Our local team is ready to answer any specific questions via your preferred channel.
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-10 flex flex-col sm:flex-row justify-center gap-6">
+          <CardContent className="pt-10 flex flex-col md:flex-row justify-center gap-6">
+              <Button asChild size="lg" className="h-16 px-10 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
+                  <a href={`tel:${BUSINESS_CONFIG.phone.replace(/\s/g, '')}`}>
+                      <Phone className="mr-3 h-7 w-7" />
+                      Call: {BUSINESS_CONFIG.phone}
+                  </a>
+              </Button>
               <Button asChild size="lg" variant="secondary" className="h-16 px-10 text-xl font-bold shadow-soft transition-transform hover:scale-105 rounded-2xl">
                   <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-3 h-7 w-7" />
                       Chat on Facebook
-                      <ArrowRight className="ml-3 h-6 w-6" />
                   </a>
               </Button>
-              <Button asChild size="lg" className="h-16 px-10 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
+              <Button asChild variant="outline" size="lg" className="h-16 px-10 text-xl font-bold text-white border-white/20 hover:bg-white/10 transition-transform hover:scale-105 rounded-2xl">
                   <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                       <Mail className="mr-3 h-7 w-7" />
                       Email Our Team

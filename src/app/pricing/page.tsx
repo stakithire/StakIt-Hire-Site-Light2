@@ -10,7 +10,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check, Truck, MessageCircle, Mail, Ruler, ShieldCheck, Box } from 'lucide-react';
+import { ArrowRight, Check, Truck, MessageCircle, Mail, Ruler, ShieldCheck, Box, Phone } from 'lucide-react';
 import { BUSINESS_CONFIG } from '@/lib/business-config';
 
 export const metadata: Metadata = {
@@ -136,14 +136,14 @@ export default function PricingPage() {
       <section className="space-y-4 pt-8">
         <h2 className="text-3xl font-bold text-center">Or, Choose a Pre-Made Moving Kit</h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto">Save time with our curated bundles. Simply let us know which kit you need when you message us.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 h-auto">
             {pricingBundles.map(bundle => (
-                <Card key={bundle.id} className="flex flex-col border-none shadow-soft">
+                <Card key={bundle.id} className="flex flex-col border-none shadow-soft h-auto">
                     <CardHeader>
-                        <div className="flex justify-between items-start gap-4">
+                        <div className="flex justify-between items-start gap-4 h-auto">
                             <div>
                                 <CardTitle>{bundle.name}</CardTitle>
-                                <CardDescription>{bundle.description}</CardDescription>
+                                <CardDescription className="h-auto">{bundle.description}</CardDescription>
                             </div>
                             <div className="text-right shrink-0">
                                 <div className="text-3xl font-bold text-primary">
@@ -157,8 +157,8 @@ export default function PricingPage() {
                             </div>
                         </div>
                     </CardHeader>
-                    <CardContent className="flex-grow">
-                        <ul className="space-y-2 text-sm text-muted-foreground pt-4 border-t">
+                    <CardContent className="flex-grow h-auto">
+                        <ul className="space-y-2 text-sm text-muted-foreground pt-4 border-t h-auto">
                             {bundle.contents.map(item => (
                                 <li key={item} className="flex items-center gap-2">
                                     <Check className="h-4 w-4 text-green-500" />
@@ -172,34 +172,38 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <Card className="border-none shadow-soft">
+      <Card className="border-none shadow-soft h-auto">
           <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Truck className="h-6 w-6 text-primary" /> Delivery & Collection</CardTitle>
+              <CardTitle className="flex items-center gap-2 h-auto"><Truck className="h-6 w-6 text-primary" /> Delivery & Collection</CardTitle>
           </CardHeader>
-          <CardContent>
-              <p className="text-muted-foreground">
+          <CardContent className="h-auto">
+              <p className="text-muted-foreground h-auto">
                   A single, flat fee of <span className="font-bold text-foreground">$30</span> applies to all orders within the {BUSINESS_CONFIG.serviceArea}. This fee covers both the delivery of your equipment at the start of your rental and the collection from your specified address at the end. No surprises.
               </p>
           </CardContent>
       </Card>
 
-       <Card className="text-center bg-muted/50 border-none">
-          <CardContent className="p-8">
+       <Card className="text-center bg-muted/50 border-none h-auto">
+          <CardContent className="p-8 h-auto">
               <h2 className="text-2xl font-bold">Ready to book your move?</h2>
-              <p className="text-muted-foreground mt-2 mb-6">Get in touch with your preferred items and dates.</p>
+              <p className="text-muted-foreground mt-2 mb-6 h-auto">Get in touch with your preferred items and dates.</p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <Button asChild size="lg" className="h-14 px-8 bg-accent text-accent-foreground hover:bg-accent/90 border-none font-bold">
+                      <a href={`tel:${BUSINESS_CONFIG.phone.replace(/\s/g, '')}`}>
+                          <Phone className="mr-2 h-5 w-5" />
+                          Call: {BUSINESS_CONFIG.phone}
+                      </a>
+                  </Button>
                   <Button asChild size="lg" className="h-14 px-8 bg-[#6930F7] font-bold">
                       <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                           <MessageCircle className="mr-2 h-5 w-5" />
-                          Message via Facebook
-                          <ArrowRight className="ml-2 h-4 w-4" />
+                          Message Facebook
                       </a>
                   </Button>
-                  <Button asChild size="lg" className="h-14 px-8 bg-accent text-accent-foreground hover:bg-accent/90 border-none font-bold">
+                  <Button asChild variant="outline" size="lg" className="h-14 px-8 font-bold border-2">
                       <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                           <Mail className="mr-2 h-5 w-5" />
-                          Email Our Team
-                          <ArrowRight className="ml-2 h-4 w-4" />
+                          Email Us
                       </a>
                   </Button>
               </div>

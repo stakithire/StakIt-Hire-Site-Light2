@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Target, Users, Eye, MessageCircle, Mail } from 'lucide-react';
+import { ArrowRight, Target, Users, Eye, MessageCircle, Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 import placeholderImageData from '@/lib/placeholder-images.json';
 import { BUSINESS_CONFIG } from '@/lib/business-config';
@@ -128,15 +128,20 @@ export default function AboutPage() {
                 Let us help make it your easiest one yet.
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-10 flex flex-col sm:flex-row justify-center gap-6">
+          <CardContent className="pt-10 flex flex-col md:flex-row justify-center gap-6">
+              <Button asChild size="lg" className="h-16 px-12 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
+                  <a href={`tel:${BUSINESS_CONFIG.phone.replace(/\s/g, '')}`}>
+                      <Phone className="mr-3 h-7 w-7" />
+                      Call Us: {BUSINESS_CONFIG.phone}
+                  </a>
+              </Button>
               <Button asChild size="lg" variant="secondary" className="h-16 px-12 text-xl font-bold shadow-soft transition-transform hover:scale-105 rounded-2xl">
                   <a href={BUSINESS_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-3 h-7 w-7" />
                       Book via Facebook
-                      <ArrowRight className="ml-4 h-7 w-7" />
                   </a>
               </Button>
-              <Button asChild size="lg" className="h-16 px-12 text-xl font-bold bg-accent text-accent-foreground border-none shadow-soft transition-transform hover:scale-105 rounded-2xl">
+              <Button asChild variant="outline" size="lg" className="h-16 px-12 text-xl font-bold text-white border-white/20 hover:bg-white/10 transition-transform hover:scale-105 rounded-2xl">
                   <a href={`mailto:${BUSINESS_CONFIG.email}`}>
                       <Mail className="mr-3 h-7 w-7" />
                       Email Our Team
